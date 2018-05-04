@@ -9,8 +9,7 @@ public class ItemCatalog {
 	/*****************************
 	 * Used for storing all the items in a database.
 	 *****************************/
-    static HashMap<ItemIdentifier, Object> itemCatalog = new HashMap<ItemIdentifier, Object>();
-
+    HashMap<ItemIdentifier, ItemDTO> itemCatalog = new HashMap<ItemIdentifier, ItemDTO>();
 	/*****************************
 	 * The constructor adds all the items to the database as its initiated 
 	 * through @method addItems.
@@ -29,9 +28,9 @@ public class ItemCatalog {
 	 * 							the items to the system and user.
 	 *********************************************************/
 
-	public static ItemDTO searchForItem(Object ItemIdentifier) {
-		if (itemCatalog.containsKey(ItemIdentifier)) {
-			ItemDTO item = (ItemDTO) itemCatalog.get(ItemIdentifier);
+	public ItemDTO searchForItem(Object ItemIdentifier) {
+		if (this.itemCatalog.containsKey(ItemIdentifier)) {
+			ItemDTO item = (ItemDTO) this.itemCatalog.get(ItemIdentifier);
 			return item; 
 			}
 		return null; 	
@@ -44,9 +43,9 @@ public class ItemCatalog {
 	 * Second @param input is for all parameter in the ItemDTO constructor.
 	 *****************************/        
     private void addItems() {
-    	itemCatalog.put(new ItemIdentifier(1),new ItemDTO("Coconut", 10, "12%", "Origin: UK"));
-    	itemCatalog.put(new ItemIdentifier(2),new ItemDTO("Bottled Water",12, "12%", "BottledWaterCo"));
-    	itemCatalog.put(new ItemIdentifier(3),new ItemDTO("Soap", 18, "12%","Don't eat"));
+    this.itemCatalog.put(new ItemIdentifier(1),new ItemDTO("Coconut", 10, "12%", "Origin: UK"));
+    	this.itemCatalog.put(new ItemIdentifier(2),new ItemDTO("Bottled Water",12, "12%", "BottledWaterCo"));
+    this.itemCatalog.put(new ItemIdentifier(3),new ItemDTO("Soap", 18, "12%","Don't eat"));
     	}
 }
 

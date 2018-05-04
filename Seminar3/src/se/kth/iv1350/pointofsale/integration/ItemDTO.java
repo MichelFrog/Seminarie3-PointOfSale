@@ -1,11 +1,15 @@
 package se.kth.iv1350.pointofsale.integration;
 
+import se.kth.iv1350.pointofsale.integration.*;
+import se.kth.iv1350.pointofsale.model.*;
+
 /*****************************************************
  * ItemDTO is final since its static and may not be
  * changed as its passing through the layers.
  *****************************************************/
 public final class ItemDTO {
 
+	private ItemIdentifer itemIdentifer;
 	private int price;
 	private String itemName;
 	private String description;
@@ -22,6 +26,7 @@ public final class ItemDTO {
 	 *****************************************************/
 	public ItemDTO(String itemName, int price,String tax, String description) {
 			
+			this.itemIdentifier;
 			this.itemName = itemName; 
 			this.price = price;
 			this.tax = tax; 
@@ -39,6 +44,8 @@ public final class ItemDTO {
 	public String toString() {
         return "Item [Name:" + itemName + ", Price:" + price + ", Taxrate:" + tax + "Description:"+ description+"]";
         }
+	
+	
 	
     /****************************
      * Get the value of itemName

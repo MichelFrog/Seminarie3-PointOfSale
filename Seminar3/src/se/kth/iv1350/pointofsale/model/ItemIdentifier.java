@@ -28,6 +28,11 @@ public class ItemIdentifier {
 		    return false;
 	 } 
 	 
+	 
+	 public int hashCode() {
+		 return itemId;
+		 
+	 }
 	 /*
 	  * Gets the ItemId from field variable.
 	  * 

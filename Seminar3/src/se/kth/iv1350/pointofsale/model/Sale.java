@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 public class Sale {
 	private SaleInformation SaleInfo;
 	private ItemDTO itemAvailableForSale;
+	private ItemCatalog ListOfItems;
 	//private final SaleInformation SaleDTO;
 	
 	/****************************
@@ -38,22 +39,22 @@ public class Sale {
      * 					Prints out error message.
      * @return item 		If there's a match the method return an item object.
      ****************************/
-    public ItemDTO addItem(Object ItemIdentifier) {	
-    	if(ItemCatalog.searchForItem(ItemIdentifier) ==null){
+    public ItemDTO addItem(ItemIdentifier ItemIdentifier) {	
+    	if(ListOfItems.searchForItem(ItemIdentifier) ==null){
     		
     		System.out.println("Item doesn't exist in the database. Please try again.");
     		
     		return null;
     		}else
     			increaseQuantity(ItemIdentifier);
-    			return itemAvailableForSale = ItemCatalog.searchForItem(ItemIdentifier);
+    			return itemAvailableForSale = ListOfItems.searchForItem(ItemIdentifier);
     }
     
 	/****************************
 	 * 
 	 * S
 	 ****************************/
-    public void saveToSaleInformation(Object Item){
+    public void saveToSaleInformation(ItemDTO Item){
     		SaleInfo
     }
     
@@ -63,13 +64,13 @@ public class Sale {
      * 
      * @param ItemIdentifier New item that has been scanned.
      ****************************/
-    public void increaseQuantity(Object ItemIdentifier) {
+    public void increaseQuantity(ItemIdentifier identifier) {
     	
-    		if(scannedItems.containsKey(ItemIdentifier)){
-    			ItemDTO ItemPlaceHolder = (ItemDTO) ItemIdentifier;
+    		if(scannedItems.containsKey(identifier)){
+    			ItemDTO ItemPlaceHolder = (ItemDTO) identifier;
     			scannedItems.put(ItemPlaceHolder, scannedItems.get(ItemPlaceHolder) + 1);
     		}else{
-    			ItemDTO ItemPlaceHolder = (ItemDTO) ItemIdentifier;
+    			ItemDTO ItemPlaceHolder = (ItemDTO) identifier;
     			scannedItems.put(ItemPlaceHolder, 1);
     		}
     }

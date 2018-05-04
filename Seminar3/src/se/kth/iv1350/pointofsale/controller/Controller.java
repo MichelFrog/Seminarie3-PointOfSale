@@ -4,12 +4,13 @@ import se.kth.iv1350.pointofsale.integration.ExternalSystem;
 import se.kth.iv1350.pointofsale.integration.ItemDTO;
 import se.kth.iv1350.pointofsale.model.ItemIdentifier;
 import se.kth.iv1350.pointofsale.integration.RegistryCreator;
-import se.kth.iv1350.pointofsale.model.Sale;
+import se.kth.iv1350.pointofsale.model.*;
 
 
 public class Controller {
 	private Sale sale;
 	private ItemDTO Item;
+	private SaleInformation InformationToBeDisplayed;
 	
 	/*
 	 *  Creates an empty object that will be used for the current {@link Sale} 
@@ -21,7 +22,9 @@ public class Controller {
 	
 	public Controller() {
 	}
-	
+	/*
+	 * TODO
+	 */
 	public void pay(AmountOfCash givenAmount) {
 		
 	}
@@ -35,11 +38,12 @@ public class Controller {
      *
      * @param code entered by the cashier.
      */
-    public void addSingleItem(ItemIdentifier ItemIdentifier) {
+    public SaleInformation addSingleItem(ItemIdentifier ItemIdentifier) {
        Item = sale.addItem(ItemIdentifier);
         if(Item != null) {
         	sale.saveToSaleInformation(Item); //TODO
         }
+        return InformationToBeDisplayed;
     }
 	
 }

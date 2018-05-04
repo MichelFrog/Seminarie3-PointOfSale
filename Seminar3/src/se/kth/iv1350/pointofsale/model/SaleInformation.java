@@ -3,16 +3,23 @@ package se.kth.iv1350.pointofsale.model;
 import se.kth.iv1350.pointofsale.model.*;
 import se.kth.iv1350.pointofsale.integration.*;
 
-public class SaleInformation {
+import java.util.*;
 
+public class SaleInformation {
+	int runningTotal;
+	
 	public SaleInformation() {
 		
 	}
 	
+
 	
-	
-	calculateTheTotalPriceOfItems() {
-		scannedItems.pu
+	private int calculateTheTotalPriceOfItems() {
+		int totalPrice;
+		
+		Sale.scannedItems.hasNext();
+		
+		return this.runningTotal = totalPrice;
 		
 	}
 	
