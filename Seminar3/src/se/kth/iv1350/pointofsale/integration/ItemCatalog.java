@@ -9,12 +9,13 @@ public class ItemCatalog {
 	/*****************************
 	 * Used for storing all the items in a database.
 	 *****************************/
-    HashMap<ItemIdentifier, ItemDTO> itemCatalog = new HashMap<ItemIdentifier, ItemDTO>();
-	/*****************************
+    HashMap<ItemIdentifier, Item> itemCatalog = new HashMap<ItemIdentifier, Item>();
+    /*****************************
 	 * The constructor adds all the items to the database as its initiated 
 	 * through @method addItems.
 	 *****************************/    
 	public ItemCatalog() {
+
 		addItems();
 	}
 	/*********************************************************
@@ -28,24 +29,36 @@ public class ItemCatalog {
 	 * 							the items to the system and user.
 	 *********************************************************/
 
-	public ItemDTO searchForItem(Object ItemIdentifier) {
-		if (this.itemCatalog.containsKey(ItemIdentifier)) {
-			ItemDTO item = (ItemDTO) this.itemCatalog.get(ItemIdentifier);
-			return item; 
+	public Item searchForItem(ItemIdentifier itemIdentifier) {
+		if (this.itemCatalog.containsKey(itemIdentifier)) {
+			return this.itemCatalog.get(itemIdentifier); 
 			}
 		return null; 	
 	}
 
 	
 	/*****************************
-	 * Adds new items to the itemCatalog HashMap.
+	 * Adds new items to the <code>itemCatalog</code> ,HashMap.
 	 * First of <code>itemCatalog</code>  @param input is for itemIdentifier
-	 * Second @param input is for all parameter in the ItemDTO constructor.
+	 * Second of <code>itemCatalog</code>  @param input is for all parameter in the Item constructor.
+	 * 
+	 * ItemIdentifier itemCode, String itemName, int price,String tax, String description
 	 *****************************/        
     private void addItems() {
-    this.itemCatalog.put(new ItemIdentifier(1),new ItemDTO("Coconut", 10, "12%", "Origin: UK"));
-    	this.itemCatalog.put(new ItemIdentifier(2),new ItemDTO("Bottled Water",12, "12%", "BottledWaterCo"));
-    this.itemCatalog.put(new ItemIdentifier(3),new ItemDTO("Soap", 18, "12%","Don't eat"));
+    	    	
+		Item coconut = new Item(new ItemIdentifier(100), "Coconut", 10, "12%", "Origin: UK" );
+    	
+			this.itemCatalog.put(coconut.getItemCode(),coconut);
+
+    		Item Water = new Item(new ItemIdentifier(200),"Bottled Water",12, "12%", "BottledWaterCo");
+    		
+    			this.itemCatalog.put(Water.getItemCode(),Water);
+    		
+    		Item Soap = new Item(new ItemIdentifier(300), "Soap", 18, "12%","Don't eat");
+  		  
+    			this.itemCatalog.put(Soap.getItemCode(),Soap);
+
+    		
     	}
 }
 

@@ -7,10 +7,10 @@ import se.kth.iv1350.pointofsale.model.*;
  * ItemDTO is final since its static and may not be
  * changed as its passing through the layers.
  *****************************************************/
-public final class ItemDTO {
+public final class Item {
 
-	private ItemIdentifer itemIdentifer;
-	private int price;
+	private ItemIdentifier itemCode;
+	private double price;
 	private String itemName;
 	private String description;
 	private String tax;
@@ -24,9 +24,9 @@ public final class ItemDTO {
 	 * @param tax   		 	The tax added to the price.
 	 * @param description 	Short description of the book.
 	 *****************************************************/
-	public ItemDTO(String itemName, int price,String tax, String description) {
+	public Item(ItemIdentifier itemCode, String itemName, int price,String tax, String description) {
 			
-			this.itemIdentifier;
+			this.itemCode = itemCode;
 			this.itemName = itemName; 
 			this.price = price;
 			this.tax = tax; 
@@ -38,15 +38,21 @@ public final class ItemDTO {
 	 * Empty ItemDTO used for returning values in <code>searchForItem<code>
 	 * *****************************************************************************
 	 */
-	public ItemDTO() {
+	public Item() {
 	}
 	
 	public String toString() {
         return "Item [Name:" + itemName + ", Price:" + price + ", Taxrate:" + tax + "Description:"+ description+"]";
         }
 	
-	
-	
+    /****************************
+     * Get the value of itemCode
+     *
+     * @return the value of itemCode
+     ***************************/
+	public ItemIdentifier getItemCode() {
+		return itemCode;
+	}
     /****************************
      * Get the value of itemName
      *

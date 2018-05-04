@@ -6,22 +6,26 @@ import se.kth.iv1350.pointofsale.integration.*;
 import java.util.*;
 
 public class SaleInformation {
-	int runningTotal;
+	double runningTotal;
+	Item	   mostRecentlyScannedItem;
 	
-	public SaleInformation() {
-		
+	public SaleInformation(Item newItem, double runningTotal) {
+		this.runningTotal += runningTotal;
+		this.mostRecentlyScannedItem = newItem;
 	}
 	
 
-	
-	private int calculateTheTotalPriceOfItems() {
-		int totalPrice;
+	/*******************
+	 * 
+	 * 
+	 *******************/
+	public String toString() {
+		String printItemNameAndPrice = mostRecentlyScannedItem.getItemName();
 		
-		Sale.scannedItems.hasNext();
-		
-		return this.runningTotal = totalPrice;
-		
+		printItemNameAndPrice += "   " + "Price:" + Double.toString(mostRecentlyScannedItem.getPrice());
+		printItemNameAndPrice += "   " + "Total:" + Double.toString(runningTotal); 
+
+		return printItemNameAndPrice;
 	}
-	
-	
+		
 }

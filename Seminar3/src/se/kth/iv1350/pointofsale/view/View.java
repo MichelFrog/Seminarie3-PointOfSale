@@ -1,7 +1,10 @@
 package se.kth.iv1350.pointofsale.view;
 
 import se.kth.iv1350.pointofsale.controller.Controller;
+import se.kth.iv1350.pointofsale.integration.*;
 import se.kth.iv1350.pointofsale.model.*;
+
+import java.util.*;
 public class View {
 	
 	ItemIdentifier ItemIdentifier1 = new ItemIdentifier(1);
@@ -9,6 +12,8 @@ public class View {
 	ItemIdentifier ItemIdentifier3 = new ItemIdentifier(3);
 	
 	private Controller contr;
+	private Item	       recentItem;
+	private SaleInformation toBeDisplayed;
 	
 	public View(Controller contr) {
 		
@@ -17,11 +22,25 @@ public class View {
 	}
 	
 	/*
-	 * 
+	 * Sample of hard coded execution of the adding functionality for system.
+	 * Presents the user with most recently added item, price and running total.
 	 * 
 	 * 
 	 */
 	public void sampleAddingItem() {
+		
+		this.recentItem =    contr.findItemToAddToSale(ItemIdentifier1);
+		this.toBeDisplayed = contr.addSingleItem(recentItem);
+		System.out.println(toBeDisplayed.toString());
+		
+		this.recentItem =    contr.findItemToAddToSale(ItemIdentifier1);
+		this.toBeDisplayed = contr.addSingleItem(recentItem);
+		System.out.println(toBeDisplayed.toString());
+		
+		this.recentItem =    contr.findItemToAddToSale(ItemIdentifier1);
+		this.toBeDisplayed = contr.addSingleItem(recentItem);
+		System.out.println(toBeDisplayed.toString());
+
 
 		
 	}

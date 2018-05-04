@@ -9,15 +9,15 @@ import java.time.LocalDateTime;
  * Collects all information regarding a particular sale.
  */
 public class Sale {
-	private SaleInformation SaleInfo;
-	private ItemDTO itemAvailableForSale;
-	private ItemCatalog ListOfItems;
+	private SaleInformation  saleInfo;
+	private Item             newlyAddedItem;
+	private ItemCatalog      listOfItems;
 	//private final SaleInformation SaleDTO;
 	
 	/****************************
 	 * Used for calculating the amount of items that has been scanned.
 	 ****************************/
-    static HashMap<ItemDTO, Integer> scannedItems = new HashMap<ItemDTO, Integer>();
+    static HashMap<Item, Integer> scannedItems = new HashMap<Item, Integer>();
 
 	/*****************************
 	 * Collects all information regarding a particular sale.
@@ -33,29 +33,23 @@ public class Sale {
     }
     
     /****************************
-     * Finds whether an item exists with the itemIdentifier, code, and returns it as:
+     * Creates updates the instance of saleInfo with new running total and most recently added item
      * 
      * @return null 		If there are no item with matching itemIdentifier it returns nothing.
      * 					Prints out error message.
      * @return item 		If there's a match the method return an item object.
      ****************************/
-    public ItemDTO addItem(ItemIdentifier ItemIdentifier) {	
-    	if(ListOfItems.searchForItem(ItemIdentifier) ==null){
-    		
-    		System.out.println("Item doesn't exist in the database. Please try again.");
-    		
-    		return null;
-    		}else
-    			increaseQuantity(ItemIdentifier);
-    			return itemAvailableForSale = ListOfItems.searchForItem(ItemIdentifier);
+    public SaleInformation addItem(Item item) {	
+    		this.saleInfo = new SaleInformation(item, (double)item.getPrice());
+    		return this.saleInfo;
     }
     
 	/****************************
 	 * 
 	 * S
 	 ****************************/
-    public void saveToSaleInformation(ItemDTO Item){
-    		SaleInfo
+    public double getRunningTotal() {
+    		
     }
     
     /****************************
@@ -64,30 +58,30 @@ public class Sale {
      * 
      * @param ItemIdentifier New item that has been scanned.
      ****************************/
-    public void increaseQuantity(ItemIdentifier identifier) {
+    public void increaseQuantity(Item newItem) {
     	
-    		if(scannedItems.containsKey(identifier)){
-    			ItemDTO ItemPlaceHolder = (ItemDTO) identifier;
-    			scannedItems.put(ItemPlaceHolder, scannedItems.get(ItemPlaceHolder) + 1);
+    		if(scannedItems.containsValue(newItem)){
+    			scannedItems.put(newItem, new Integer(scannedItems.get(newItem) + 1));
     		}else{
-    			ItemDTO ItemPlaceHolder = (ItemDTO) identifier;
-    			scannedItems.put(ItemPlaceHolder, 1);
+    			
+    			scannedItems.put(newItem, 1);
     		}
     }
+
     
-    
-    
-    
-    /*
+    /****************************
      * Shows the Item that has been scanned as a text for the cashier.
-     * NOT IN USE
+     * NOT IN USE YET
      * @param NewlyAddedItem 	The item that has been just searched and added to the ScannedItems
-     */
-    	public void showAddedItem (Object NewlyAddedItem) {
-    		NewlyAddedItem.toString();
+     ****************************/
+    	public void showAddedItem(Item newlyAddedItem) {
+    		newlyAddedItem.toString();
     	}
     	
+    public void	getRunningTotal( ) {
     	
+    	
+    }
     			
     
 }

@@ -1,7 +1,8 @@
 package se.kth.iv1350.pointofsale.controller;
 
 import se.kth.iv1350.pointofsale.integration.ExternalSystem;
-import se.kth.iv1350.pointofsale.integration.ItemDTO;
+import se.kth.iv1350.pointofsale.integration.Item;
+import se.kth.iv1350.pointofsale.integration.ItemCatalog;
 import se.kth.iv1350.pointofsale.model.ItemIdentifier;
 import se.kth.iv1350.pointofsale.integration.RegistryCreator;
 import se.kth.iv1350.pointofsale.model.*;
@@ -9,8 +10,9 @@ import se.kth.iv1350.pointofsale.model.*;
 
 public class Controller {
 	private Sale sale;
-	private ItemDTO Item;
+	private Item Item;
 	private SaleInformation InformationToBeDisplayed;
+	private ItemCatalog ItemList;
 	
 	/*
 	 *  Creates an empty object that will be used for the current {@link Sale} 
@@ -28,22 +30,27 @@ public class Controller {
 	public void pay(AmountOfCash givenAmount) {
 		
 	}
-
+	public Item findItemToAddToSale(ItemIdentifier ItemIdentifier) {
+		ItemList.searchForItem(ItemIdentifier);
+		return Item;
+	}
 
     /**
-     * System searches for the item and adds it to the SaleInformation
+     * Takes the item after its been verifies
      * Books the specified car. After calling this method, the car can not be
      * booked by any other customer. This method also permanently saves
      * information about the current rental.
      *
      * @param code entered by the cashier.
      */
-    public SaleInformation addSingleItem(ItemIdentifier ItemIdentifier) {
-       Item = sale.addItem(ItemIdentifier);
-        if(Item != null) {
-        	sale.saveToSaleInformation(Item); //TODO
+    public SaleInformation addSingleItem(Item Item) {
+    	InformationToBeDisplayed = sale.addItem(Item);
+       
+    		if(Item != null) {
+        	return InformationToBeDisplayed;
         }
-        return InformationToBeDisplayed;
+        return null;
     }
+    
 	
 }
