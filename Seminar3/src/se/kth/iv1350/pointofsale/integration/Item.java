@@ -10,7 +10,7 @@ import se.kth.iv1350.pointofsale.model.*;
 public final class Item {
 
 	private ItemIdentifier itemCode;
-	private double price;
+	private AmountOfCash price;
 	private String itemName;
 	private String description;
 	private String tax;
@@ -24,7 +24,7 @@ public final class Item {
 	 * @param tax   		 	The tax added to the price.
 	 * @param description 	Short description of the book.
 	 *****************************************************/
-	public Item(ItemIdentifier itemCode, String itemName, int price,String tax, String description) {
+	public Item(ItemIdentifier itemCode, String itemName, AmountOfCash price,String tax, String description) {
 			 
 			this.itemCode = itemCode;
 			this.itemName = itemName; 
@@ -67,7 +67,7 @@ public final class Item {
      *
      * @return the value of price
      ***************************/
-    public double getPrice() {
+    public AmountOfCash getPrice() {
         return price;
     }
 

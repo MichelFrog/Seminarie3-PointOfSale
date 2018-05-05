@@ -47,15 +47,15 @@ public class ItemCatalog {
 	 *****************************/        
     private void addItems() {
     	    	
-		Item coconut = new Item(new ItemIdentifier(100), "Coconut", 10, "12%", "Origin: UK" );
+		Item coconut = new Item(new ItemIdentifier(100), "Coconut", new AmountOfCash(10), "12%", "Origin: UK" );
     	
 			this.itemCatalog.put(coconut.getItemCode(),coconut);
 
-    		Item Water = new Item(new ItemIdentifier(200),"Bottled Water",12, "12%", "BottledWaterCo");
+    		Item Water = new Item(new ItemIdentifier(200),"Bottled Water",new AmountOfCash(9), "12%", "BottledWaterCo");
     		
     			this.itemCatalog.put(Water.getItemCode(),Water);
     		
-    		Item Soap = new Item(new ItemIdentifier(300), "Soap", 18, "12%","Don't eat");
+    		Item Soap = new Item(new ItemIdentifier(300), "Soap", new AmountOfCash(6), "12%","Don't eat");
   		  
     			this.itemCatalog.put(Soap.getItemCode(),Soap);
 

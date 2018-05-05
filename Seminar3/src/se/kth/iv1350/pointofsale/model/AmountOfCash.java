@@ -6,12 +6,20 @@ package se.kth.iv1350.pointofsale.model;
 	 *************************/
 public final class AmountOfCash {
 	    private  double amountOfCash;
+	    private double finalAmount;
 
 	    /**************************
 	     * Constructor for AmountOfCash, amountOfCash set as zero.
 	     *************************/
 	    public AmountOfCash() {
 	        this.amountOfCash = 0;
+	    }
+	    
+	    /**************************
+	     * Updates the field variables with a new desired amount
+	     *************************/
+	    public void updateAmount(double newAmount) {
+	        amountOfCash = newAmount;
 	    }
 	    
 	    /**************************************************
@@ -35,27 +43,35 @@ public final class AmountOfCash {
 	        return new AmountOfCash(amountOfCash - other.amountOfCash);
 	    }
 	    
-	    /*************************************************
-	     * Performs addition with another instance of <code>AmountOfCash</code>
-	     * and the current <code>AmountOfCash</code> within the class.
-	     *
-	     * @param other amount to add on to current amount of cash
-	     * @return The result after the addition.
-	     *************************************************/
-	    public AmountOfCash plus(AmountOfCash other) {
-	        return new AmountOfCash(amountOfCash + other.amountOfCash);
-	    }	  
+	    
+	    public double getAmount() {
+	        return amountOfCash;
+	    }
+	    
+	    public void setAmount(AmountOfCash other) {
+	    		this.amountOfCash = other.getAmount();
+	    }
+	    
+	    public double getFinalAmount() {
+	        return finalAmount;
+	    }
+	    
+	    public void setFinalAmount(AmountOfCash totalPrice) {
+    			this.finalAmount = totalPrice.getAmount();
+	    }
 	    
 	    /*************************************************
-	     * Performs addition with a double varaible
+	     * Performs addition with a double variable
 	     * and the current <code>AmountOfCash</code> within the class.
 	     *
 	     * @param other amount to add on to current amount of cash
 	     * @return The result after the addition.
 	     *************************************************/
-	    public AmountOfCash add(double other) {
-	        return new AmountOfCash(amountOfCash + other);
+	    public void add(AmountOfCash addition) {
+	    		amountOfCash += addition.getAmount();
 	    }
+  
+	    
 
 	    /**************************************************************************
 	     * Two <code>AmountOfCash</code>s are equal if they represent the same amount.
