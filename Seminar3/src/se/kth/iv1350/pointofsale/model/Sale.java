@@ -40,16 +40,17 @@ public class Sale {
      * @return item 		If there's a match the method return an item object.
      ****************************/
     public SaleInformation addItem(Item item) {	
-    		this.saleInfo = new SaleInformation(item, (double)item.getPrice());
-    		return this.saleInfo;
+    		this.saleInfo = new SaleInformation(item);
+    		return saleInfo;
     }
     
 	/****************************
+	 * Fetches most recent running total.
 	 * 
-	 * S
+	 * @return fetches the most recent running total from SaleInformation,
 	 ****************************/
     public double getRunningTotal() {
-    		
+    		return saleInfo.getRunningTotal();
     }
     
     /****************************
@@ -78,10 +79,6 @@ public class Sale {
     		newlyAddedItem.toString();
     	}
     	
-    public void	getRunningTotal( ) {
-    	
-    	
-    }
     			
     
 }

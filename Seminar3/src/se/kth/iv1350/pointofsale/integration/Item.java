@@ -67,7 +67,7 @@ public final class Item {
      *
      * @return the value of price
      ***************************/
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 

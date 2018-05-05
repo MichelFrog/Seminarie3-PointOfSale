@@ -11,11 +11,12 @@ public class CashRegister {
 	}
 	
 	public AmountOfCash getRunningTotal() {
-		
+	
 	}
 	/*
 	 * @return: calculates the change after 
 	 */
-	public void getChange[]
+	public void getChange() {
 	return givenAmount.minus(totalCost);
+	}
 }

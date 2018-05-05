@@ -1,30 +1,27 @@
 package se.kth.iv1350.pointofsale.model;
 
-import java.util.*;
 
 /**
 	 * Represents an amount of money or amount of Items
 	 */
 public final class AmountOfCash {
-	    private final int amount;
+	    private  double amountOfCash = 0;
 
 	    /**
-	     * Creates a new instance, representing the amount 0.
+	     * Constructor for AmountOfCash
 	     */
 	    public AmountOfCash() {
-	        this(0);
 	    }
 
 	    /**
-	     * Subtracts the specified <code>Amount</code> from this object and returns
-	     * an <code>Amount</code> instance with the result. The operation will
-	     * overflow if the result is smaller than <code>Integer.MIN_VALUE</code>.
+	     * Creates new amount of cash after subtracting the previous
+	     * <code>AmountOfCash</code> with another one.
 	     *
-	     * @param other The <code>Amount</code> to subtract.
-	     * @return The result of the subtraction.
+	     * @param other The <code>AmountOfCash</code> to subtract.
+	     * @return The result after subtraction
 	     */
-	    public AmountOfCash minus(AmountOfCash other) {
-	        return new AmountOfCash(amount - other.amount);
+	    public AmountOfCash subtract(AmountOfCash other) {
+	        return new AmountOfCash(amountOfCash - other.amountOfCash);
 	    }
 	    
 	    /**
@@ -32,32 +29,19 @@ public final class AmountOfCash {
 	     *
 	     * @param amount The amount represented by the newly created instance.
 	     */
-	    public AmountOfCash(int amount) {
-	        this.amount = amount;
+	    public AmountOfCash(double amountOfCash) {
+	        this.amountOfCash = amountOfCash;
 	    }
 
 	    /**
-	     * Subtracts the specified <code>Amount</code> from this object and returns
-	     * an <code>Amount</code> instance with the result. The operation will
-	     * overflow if the result is smaller than <code>Integer.MIN_VALUE</code>.
+	     * Adds on a new <code>AmountOfCash</code> to the current <code>AmountOfCash</code>
+	     * and creates a new instance of <code>AmountOfCash</code> with greater value.
 	     *
-	     * @param other The <code>Amount</code> to subtract.
-	     * @return The result of the subtraction.
-	     */
-	    public AmountOfCash minus(AmountOfCash other) {
-	        return new AmountOfCash(amount - other.amount);
-	    }
-
-	    /**
-	     * Adds the specified <code>Amount</code> to this object and returns an
-	     * <code>Amount</code> instance with the result. The operation will
-	     * overflow if the result is larger than <code>Integer.MAX_VALUE</code>.
-	     *
-	     * @param other The <code>Amount</code> to add.
-	     * @return The result of the addition.
+	     * @param other amount to add on to current amount of cash
+	     * @return The result after the addition.
 	     */
 	    public AmountOfCash plus(AmountOfCash other) {
-	        return new AmountOfCash(amount + other.amount);
+	        return new AmountOfCash(amountOfCash + other.amountOfCash);
 	    }
 
 	    /**
@@ -73,12 +57,12 @@ public final class AmountOfCash {
 	            return false;
 	        }
 	        AmountOfCash otherAmount = (AmountOfCash) other;
-	        return amount == otherAmount.amount;
+	        return amountOfCash == otherAmount.amountOfCash;
 	    }
 
 	    @Override
 	    public String toString() {
-	        return Integer.toString(amount);
+	        return Double.toString(amountOfCash);
 	    }
 }
 

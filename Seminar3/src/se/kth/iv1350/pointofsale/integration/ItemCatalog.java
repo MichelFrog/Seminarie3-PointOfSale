@@ -30,6 +30,7 @@ public class ItemCatalog {
 	 *********************************************************/
 
 	public Item searchForItem(ItemIdentifier itemIdentifier) {
+
 		if (this.itemCatalog.containsKey(itemIdentifier)) {
 			return this.itemCatalog.get(itemIdentifier); 
 			}

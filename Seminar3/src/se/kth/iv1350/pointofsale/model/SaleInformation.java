@@ -9,14 +9,14 @@ public class SaleInformation {
 	double runningTotal;
 	Item	   mostRecentlyScannedItem;
 	
-	public SaleInformation(Item newItem, double runningTotal) {
-		this.runningTotal += runningTotal;
+	public SaleInformation(Item newItem) {
+		this.runningTotal += newItem.getPrice();
 		this.mostRecentlyScannedItem = newItem;
 	}
 	
 
 	/*******************
-	 * 
+	 * Creates a string for printing out the Name, price of the item and the current running total.
 	 * 
 	 *******************/
 	public String toString() {
@@ -26,6 +26,10 @@ public class SaleInformation {
 		printItemNameAndPrice += "   " + "Total:" + Double.toString(runningTotal); 
 
 		return printItemNameAndPrice;
+	}
+	
+	public double getRunningTotal() {
+		return runningTotal;
 	}
 		
 }

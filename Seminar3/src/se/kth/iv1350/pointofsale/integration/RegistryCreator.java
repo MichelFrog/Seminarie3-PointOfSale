@@ -3,6 +3,11 @@ package se.kth.iv1350.pointofsale.integration;
 public class RegistryCreator {
     private ItemCatalog itemCatalog = new ItemCatalog();
     private ExternalSystem externalSystem = new ExternalSystem();
+    
+    public RegistryCreator(){
+    	getItemCatalog();
+    	getExternalSystem();
+    }
     /**
      * Get the value of itemCatalog
      *
@@ -17,7 +22,7 @@ public class RegistryCreator {
      *
      * @return the value of externalSystem
      */
-    public ExternalSystem getCarRegistry() {
+    public ExternalSystem getExternalSystem() {
         return externalSystem;
-    }
+    } 
 }
