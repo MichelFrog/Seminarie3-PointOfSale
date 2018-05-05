@@ -11,14 +11,15 @@ public class View {
 	ItemIdentifier ItemIdentifier2 = new ItemIdentifier(200);
 	ItemIdentifier ItemIdentifier3 = new ItemIdentifier(300);
 	
-	private Controller contr;
-	private Item	       recentItem;
+	private Controller 		contr;
+	private Item	      	    recentItem;
 	private SaleInformation toBeDisplayed;
+	private AmountOfCash		givenAmount;
 	
 	public View(Controller contr) {
 				
 	this.contr = contr;
-	
+	 
 	}
 	
 	/*
@@ -26,7 +27,7 @@ public class View {
 	 * Presents the user with most recently added item, price and running total.
 	 * 
 	 */
-	public void sampleAddingItem() {
+	public void sampleAddingItemsAndPayment() {
 		
 		this.recentItem =    contr.findItemForSale(ItemIdentifier1);
 		 if (ItemIdentifier1 == null) throw new NullPointerException("input1");
@@ -39,9 +40,12 @@ public class View {
 		System.out.println(toBeDisplayed.toString());
 		
 		this.recentItem =    contr.findItemForSale(ItemIdentifier3);
-		 if (ItemIdentifier3 == null) throw new NullPointerException("input2");
+		 if (ItemIdentifier3 == null) throw new NullPointerException("input3");
 		this.toBeDisplayed = contr.addSingleItem(recentItem);
 		System.out.println(toBeDisplayed.toString());
+		
+        AmountOfCash givenAmount = new AmountOfCash(1500);
+
 	}
 	
 	/*
@@ -49,12 +53,7 @@ public class View {
 	 * Presents the user with most recently added item, price and running total.
 	 * 
 	 */
-	public void samplePayment() {
-		
-		
-		
-		
-	}
+
 
 	
 

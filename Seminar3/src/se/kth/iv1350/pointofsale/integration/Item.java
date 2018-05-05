@@ -25,7 +25,7 @@ public final class Item {
 	 * @param description 	Short description of the book.
 	 *****************************************************/
 	public Item(ItemIdentifier itemCode, String itemName, int price,String tax, String description) {
-			
+			 
 			this.itemCode = itemCode;
 			this.itemName = itemName; 
 			this.price = price;

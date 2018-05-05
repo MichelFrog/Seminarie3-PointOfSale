@@ -4,13 +4,15 @@ import se.kth.iv1350.pointofsale.model.*;
 import se.kth.iv1350.pointofsale.integration.*;
 
 public class CashRegister {
-	 private AmountOfCash balance = new AmountOfCash();
+	private double balance;
+	private SaleInformation runnningTotalToBeChanged = new SaleInformation();
 	   
-	public void storePayment(AmountOfCash givenAmount){
+	public void storePayment(double givenAmount){
 		balance = balance.plus(payment.getTotalCost());
 	}
 	
-	public AmountOfCash getRunningTotal() {
+	public double calculateRunningTotal(Item newlyAddedItem) {
+		
 	
 	}
 	/*

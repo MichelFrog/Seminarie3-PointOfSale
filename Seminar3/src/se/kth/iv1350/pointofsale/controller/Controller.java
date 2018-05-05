@@ -10,12 +10,11 @@ import se.kth.iv1350.pointofsale.model.*;
 
 
 public class Controller {
-	private Sale sale;
-	private Item item;
-	private SaleInformation informationToBeDisplayed;
-	private ItemCatalog itemList;
-	private Printer printer;
-	private CashRegister cashReg;
+	private Sale 				sale;
+	private Item 				item;
+	private SaleInformation 		informationToBeDisplayed;
+	private ItemCatalog			itemList;
+	private Printer 				printer;
 	
 	/*
 	 *  Creates an empty object that will be used for the current {@link Sale} 
@@ -26,10 +25,10 @@ public class Controller {
 	}
 	
     public Controller(RegistryCreator regCreator, Printer printer) {
+    		startNewSale();
         this.itemList = regCreator.getItemCatalog();
         this.printer = printer;
-        this.cashReg = new CashRegister();
-        // this.rentalRegistry = regCreator.getExternalSystem();
+        this.informationToBeDisplayed = new SaleInformation();
     }
 	/*
 	 * TODO
@@ -43,7 +42,7 @@ public class Controller {
 		
 		return this.item = itemList.searchForItem(ItemIdentifier);
 	}
-
+ 
     /**
      * Takes the item after its been verifies
      * Books the specified car. After calling this method, the car can not be
@@ -51,10 +50,11 @@ public class Controller {
      * information about the current rental.
      *
      * @param code entered by the cashier.
-     */
+     */ 
     public SaleInformation addSingleItem(Item item) {
-    this.informationToBeDisplayed = sale.addItem(item);
-
+    	
+    	this.informationToBeDisplayed = sale.updateSale(item);
+    	
     		if(item != null) {
         	return informationToBeDisplayed;
         }

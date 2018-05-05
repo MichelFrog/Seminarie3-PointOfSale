@@ -19,16 +19,17 @@ public class ItemIdentifier {
 	 * @return true(1) if they are equal else return false(0).
 	 * 
 	 */
+	 @Override
 	 public boolean equals(Object comparedItem){
 		  
 		    if(comparedItem instanceof ItemIdentifier){ 
 		    ItemIdentifier compId = (ItemIdentifier) comparedItem;
 		    return itemId == compId.getItemId();
 		    }
-		    return false;
+		    return false; 
 	 } 
 	 
-	 
+	 @Override
 	 public int hashCode() {
 		 return itemId;
 		 

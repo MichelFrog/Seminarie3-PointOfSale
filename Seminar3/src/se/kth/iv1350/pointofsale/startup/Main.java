@@ -17,8 +17,8 @@ import se.kth.iv1350.pointofsale.view.*;
 	        RegistryCreator creator = new RegistryCreator();
 	        Printer printer = new Printer();
 	        Controller contr = new Controller(creator, printer);
-	        new View(contr).sampleAddingItem();
-	        
+	        new View(contr).sampleAddingItemsAndPayment();
+	         
 	       // view.sampleAddingItem();
 	    }
 

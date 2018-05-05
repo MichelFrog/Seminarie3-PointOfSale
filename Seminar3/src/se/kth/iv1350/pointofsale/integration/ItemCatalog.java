@@ -30,7 +30,7 @@ public class ItemCatalog {
 	 *********************************************************/
 
 	public Item searchForItem(ItemIdentifier itemIdentifier) {
-
+		
 		if (this.itemCatalog.containsKey(itemIdentifier)) {
 			return this.itemCatalog.get(itemIdentifier); 
 			}
@@ -59,7 +59,7 @@ public class ItemCatalog {
   		  
     			this.itemCatalog.put(Soap.getItemCode(),Soap);
 
-    		
+    		 
     	}
 }
 
