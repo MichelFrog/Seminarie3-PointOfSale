@@ -31,6 +31,7 @@ public class SaleInformation {
     }
     
 	/*************************************
+	 * NOT IN USE
 	 * Creates a string for printing out the Name, 
 	 * price of the item and the current running total.
 	 *************************************/

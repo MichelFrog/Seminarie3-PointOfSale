@@ -18,12 +18,13 @@ public class Controller {
 	private Receipt			    receipt;
 	private CashRegister			cashRegister;
 	private TotalPrice			totalPrice;
+	private RegistryCreator      regCreator;
 	
 	 private AmountOfCash startingBalance = new AmountOfCash(2000);
-	/*
+	/**********************************************
 	 *  Creates an empty object that will be used for the current {@link Sale} 
 	 *  Basic flow
-	 */
+	 **********************************************/
 	public void startNewSale(CashRegister RegistercashRegister) {
 		sale = new Sale(cashRegister);
 	}
@@ -33,17 +34,19 @@ public class Controller {
     		startNewSale(cashRegister);
         this.itemList = regCreator.getItemCatalog();
         this.printer = printer;
-        totalPrice = new TotalPrice(saleInfo);
         this.saleInfo = new SaleInformation();
+        totalPrice = new TotalPrice(saleInfo);
+        this.regCreator = regCreator;
     }
 
-    /*
+    /**********************************************
      * Searches the ItemCatalog to check whether or not the item actually exists. 
+     * 
      * If it exist:
      * @return Item returns the found item from the register
      * If it doesn't:
      * @return null return null if the item is non-existing
-     */
+     **********************************************/
 	public Item findItemForSale(ItemIdentifier ItemIdentifier) {
 		if(itemList.searchForItem(ItemIdentifier) == null) {
 			return null;}
@@ -54,14 +57,14 @@ public class Controller {
 		return sale.finalizeSale();
 	}
  
-    /**
+    /***********************************************
      * Takes the item after its been verifies
      * Books the specified car. After calling this method, the car can not be
      * booked by any other customer. This method also permanently saves
      * information about the current rental.
      *
      * @param code entered by the cashier.
-     */ 
+     **********************************************/ 
     public SaleDTO addSingleItem(ItemIdentifier item) {
     	
     		if(findItemForSale(item) == null) {
@@ -70,17 +73,24 @@ public class Controller {
     		return sale.addItem(findItemForSale(item));    
     	}
     
-    /**
+    /**********************************************
+    *Calculates the amount of change to be given back.
+    *Creates a new SaleDTO with the final SaleDTO with all the
+    *information of the purchase. Creates a new receipt with necessary information.
     *
-    * @param paidAmount
-    * @return
-    */
+    * @param paidAmount The amount of cash given by the customer
+    * @return change The amount of change after the pay.
+    **********************************************/
    public AmountOfCash pay(AmountOfCash givenAmount) {
+	   AmountOfCash change = sale.pay(givenAmount);
+	   SaleDTO finalSaleInformation = sale.getSaleData();
+	   receipt = new Receipt(finalSaleInformation, change, givenAmount);
+	   
+	   regCreator.getExternalSystem().updateAccountingSystem(finalSaleInformation);
+	   regCreator.getExternalSystem().updateInventorySystem(finalSaleInformation);
+	   printer.printReceipt(receipt);
+	   
+       return change;
+   	}
 
-       return cashRegister.registerPayment(givenAmount, totalPrice);
-
-}
-  // receipt = new Receipt(sale.getSaleData(), change, givenAmount);
-    
-	
 }

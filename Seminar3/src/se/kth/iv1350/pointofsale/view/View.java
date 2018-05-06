@@ -23,11 +23,11 @@ public class View {
 	 
 	}
 	
-	/*
+	/*******************************************************************************************
 	 * Sample of hard coded execution of the adding functionality for system.
 	 * Presents the user with most recently added item, price and running total.
 	 * 
-	 */
+	 *******************************************************************************************/
 	public void sampleAddingItemsAndPayment() {
 		
 		this.recentItem =    contr.findItemForSale(ItemIdentifier1);
@@ -45,23 +45,13 @@ public class View {
 		this.toBeDisplayed = contr.addSingleItem(ItemIdentifier3);
 		System.out.println(toBeDisplayed.toString());
 		System.out.println("----------------------");
-		System.out.println(toBeDisplayed.finalPriceIs());
 		TotalPriceDTO total = contr.finalizeSale();
+		System.out.println("Your total is: " + total);
 		
         AmountOfCash givenAmount = new AmountOfCash(1500);
         
-        System.out.println("Received: 1500 " + "\n"+ "Return:" +contr.pay(givenAmount));
+        System.out.println("You paid:" +givenAmount+ "\n"+ "Your change:" +contr.pay(givenAmount));
 	}
-	
-	/*
-	 * Sample of hard coded execution of the adding functionality for system.
-	 * Presents the user with most recently added item, price and running total.
-	 * 
-	 */
-
-
-	
-
 	
 
 }

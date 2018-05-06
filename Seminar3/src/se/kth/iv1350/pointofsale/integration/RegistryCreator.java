@@ -8,20 +8,20 @@ public class RegistryCreator {
     	getItemCatalog();
     	getExternalSystem();
     }
-    /**
+    /********************************************
      * Get the value of itemCatalog
      *
      * @return the value of itemCatalog
-     */
+     *******************************************/
     public ItemCatalog getItemCatalog() {
         return itemCatalog;
     }
 
-    /**
+    /********************************************
      * Get the value of externalSystem
      *
      * @return the value of externalSystem
-     */
+     *******************************************/
     public ExternalSystem getExternalSystem() {
         return externalSystem;
     } 

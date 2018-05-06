@@ -8,9 +8,10 @@ public class TotalPriceDTO {
 	     * @param totalPrice
 	     */
 	    public TotalPriceDTO(TotalPrice totalPrice) {
-	        this.totalPrice = totalPrice.getFinalPrice();
+	        this.totalPrice = totalPrice.getPrice();
 	    }
 
+	    
 	    /**
 	     *
 	     * @return

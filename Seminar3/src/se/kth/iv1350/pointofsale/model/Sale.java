@@ -16,9 +16,10 @@ public class Sale {
 	 * Collects all information regarding a particular sale.
 	 *******************************************************/ 
 	private SaleInformation  saleInfo;
-   // private ScannedItems scannedItems;
     private CashRegister cashRegister; 
     private TotalPrice 	totalPrice;
+
+     private ScannedItems scannedItems;
 
     /***************************************************************
      * Creates a new instance, and records the time it was created. 
@@ -28,9 +29,9 @@ public class Sale {
     	this.saleInfo = new SaleInformation();
     	this.runningTotal = new AmountOfCash();
     	this.newlyAddedItem = new Item();
-   // 	this.scannedItems = new ScannedItems();
-    	this.cashRegister = cashRegister;
-    	 totalPrice = new TotalPrice(saleInfo);
+   	this.scannedItems = new ScannedItems();
+	totalPrice = new TotalPrice(saleInfo);
+   	this.cashRegister = cashRegister;
     }
     
     /**********************************************************************************
@@ -49,22 +50,11 @@ public class Sale {
     * @param givenAmount
     * @return
     **************************************/
-   public AmountOfCash pay(AmountOfCash givenAmount, TotalPrice totalPrice) {
-	   
-		return cashRegister.registerPayment(givenAmount, totalPrice);
+   public AmountOfCash pay(AmountOfCash givenAmount) {
+	   return cashRegister.registerPayment(givenAmount, totalPrice);
    }
-    /**********************************************************************************
-     * Shows the Item that has been scanned as a text for the cashier.
-     * NOT IN USE YET
-     * @param NewlyAddedItem 	The item that has been just searched and 
-     * 							added to the ScannedItems
-     **********************************************************************************/
-    	public void showAddedItem(Item newlyAddedItem) {
-    		newlyAddedItem.toString();
-    	}
     	
     public TotalPriceDTO finalizeSale() {
-    		totalPrice = new TotalPrice(saleInfo);
     		return new TotalPriceDTO(totalPrice);
     	}
     	
@@ -90,5 +80,13 @@ public class Sale {
    public SaleDTO getSaleData() {
 		return saleInfo.getSaleInformation();
 }
-
+   /**********************************************************************************
+    * Shows the Item that has been scanned as a text for the cashier.
+    * NOT IN USE YET
+    * @param NewlyAddedItem 	The item that has been just searched and 
+    * 							added to the ScannedItems
+    **********************************************************************************/
+   	public void showAddedItem(Item newlyAddedItem) {
+   		newlyAddedItem.toString();
+   	}
 }

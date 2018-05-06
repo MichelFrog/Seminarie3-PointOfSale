@@ -41,8 +41,14 @@ public final class Item {
 	public Item() {
 	}
 	
+	/*******************************************************************************
+	 * Creates a string that is used to print to console
+	 * 
+	 * @return String Return all the information within the item.
+	 * *****************************************************************************
+	 */
 	public String toString() {
-        return "Item [Name:" + itemName + ", Price:" + price + ", Taxrate:" + tax + "Description:"+ description+"]";
+        return "Item [Name:" + itemName + "\n"+"Price:" + price +"\n"+ "Taxrate:" + tax +"\n"+ "Description:"+ description+"]";
         }
 	
     /****************************

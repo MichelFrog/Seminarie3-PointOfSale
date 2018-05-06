@@ -56,6 +56,13 @@ public class ScannedItems {
     		return scannedItems.get(itemToBeAdded);
     }
     
+    /*******************************************************************************
+	 * Creates a StringBuilder representation of all the items in the <code>ScannedItems</code> class
+	 * Makes use of the iteration function that goes through each entry in the HashMap.
+	 * 
+	 * @return String the item list in a string format that can is used by 
+	 * 				  <code>Printer</code> and <code>Receipt</code> 
+	 ******************************************************************************/
     public String toString(){
         StringBuilder buildListOfSoldItems = new StringBuilder();
         Iterator iteratorForSoldItems = scannedItems.entrySet().iterator();
