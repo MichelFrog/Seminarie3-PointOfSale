@@ -29,6 +29,12 @@ public class Controller {
 		sale = new Sale(cashRegister);
 	}
 	
+	/*************************************************
+	 * Constructor that initialize all the field variables and starts a new sale
+	 * 
+	 * @param regCreator Used to get the ItemCatalog and sending info to ExternalSystem
+	 * @param printer Used for printing receipt
+	 *************************************************/
     public Controller(RegistryCreator regCreator, Printer printer) {
         this.cashRegister = new CashRegister(startingBalance);
     		startNewSale(cashRegister);

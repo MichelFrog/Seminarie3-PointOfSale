@@ -6,10 +6,10 @@ import se.kth.iv1350.pointofsale.integration.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
-/**
+/*******************************
  *@author Michel
  * 
- */
+ ******************************/
 public class SaleDTO {
 
 	private final LocalDateTime saleTime;
@@ -20,13 +20,13 @@ public class SaleDTO {
 
 	private final ScannedItems scannedItems;
 
-    /**
-     *
-     * @param saleTime    The time of the sale.
+    /*******************************
+     *Constructor with parameters for the SaleDTO
+     * @param saleTime      The time of the sale.
      * @param runningTotal  The current running total.
-     * @param lastSoldItem  
-     * @param soldItems
-     */
+     * @param lastSoldItem  The most recently sold item.
+     * @param scannedItems  All the scanned/sold items.
+     ******************************/
     public SaleDTO(AmountOfCash runningTotal, Item lastSoldItem, ScannedItems scannedItems) {
         this.saleTime = LocalDateTime.now();
         this.runningTotal = runningTotal;

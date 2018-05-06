@@ -47,13 +47,20 @@ public class Sale {
     }
     
     /***************************************
-    * @param givenAmount
-    * @return
+     * Pays for the whole sale and returns change.
+     * 
+    * @param givenAmount the amount of cash given by customer
+    * @return AmountOfCash change is returned as an AmountOfCash
     **************************************/
    public AmountOfCash pay(AmountOfCash givenAmount) {
 	   return cashRegister.registerPayment(givenAmount, totalPrice);
    }
     	
+   /***************************************
+   * A new TotalPriceDTO is created to present the final 
+   * total sum that is used for the last payment.
+   * @return TotalPriceDTO contains final total price.
+   **************************************/
     public TotalPriceDTO finalizeSale() {
     		return new TotalPriceDTO(totalPrice);
     	}
@@ -65,18 +72,25 @@ public class Sale {
     		return saleInfo;
     	}
     	
+    	/******************************
+    	 * Gets the current scanned item.
+    	 *******************************/
     public Item getScannedItem() {
     		return newlyAddedItem;
     }
     
+	/******************************
+	 * Gets the current running total.
+	 *******************************/
     public AmountOfCash getSaleIntoRunningTotal() {
     		return runningTotal;
     }
     
-    /**
+    /*******************************
+    * Creates and returns a new SaleDTO.
     *
-    * @return
-    */
+    * @return SaleDTO get the current saleinformation.
+    *******************************/
    public SaleDTO getSaleData() {
 		return saleInfo.getSaleInformation();
 }

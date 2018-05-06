@@ -48,7 +48,8 @@ public final class Item {
 	 * *****************************************************************************
 	 */
 	public String toString() {
-        return "Item [Name:" + itemName + "\n"+"Price:" + price +"\n"+ "Taxrate:" + tax +"\n"+ "Description:"+ description+"]";
+        return "Item------------------"+"\n"+"Name:" + itemName + "\n"+"Price:" 
+        			+ price +"\n"+ "Taxrate:" + tax +"\n"+ "Description:"+ description;
         }
 	
     /****************************

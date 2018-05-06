@@ -32,6 +32,7 @@ public class View {
 		
 		this.recentItem =    contr.findItemForSale(ItemIdentifier1);
 		 if (ItemIdentifier1 == null) throw new NullPointerException("input1");
+		 
 		this.toBeDisplayed = contr.addSingleItem(ItemIdentifier1);
 		System.out.println(toBeDisplayed.toString());
 		
