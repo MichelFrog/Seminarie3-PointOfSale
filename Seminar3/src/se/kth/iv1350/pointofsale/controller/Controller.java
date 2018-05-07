@@ -64,10 +64,8 @@ public class Controller {
 	}
  
     /***********************************************
-     * Takes the item after its been verifies
-     * Books the specified car. After calling this method, the car can not be
-     * booked by any other customer. This method also permanently saves
-     * information about the current rental.
+     * Takes the item after its been verifies and adds 
+     * it through sale to SaleInformation.
      *
      * @param code entered by the cashier.
      **********************************************/ 
