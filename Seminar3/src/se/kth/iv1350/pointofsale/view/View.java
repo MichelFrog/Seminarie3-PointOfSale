@@ -10,12 +10,13 @@ public class View {
 	
 	ItemIdentifier ItemIdentifier1 = new ItemIdentifier(100);
 	ItemIdentifier ItemIdentifier2 = new ItemIdentifier(200);
-	ItemIdentifier ItemIdentifier3 = new ItemIdentifier(300);
+	ItemIdentifier ItemIdentifier3 = new ItemIdentifier(0);
 	
 	private Controller 		contr;
-	private Item	      	    recentItem;
+	private Item	      	    recentlyScannedItem;
 	private SaleDTO 			toBeDisplayed;
 	private AmountOfCash		givenAmount;
+
 	
 	public View(Controller contr) {
 				
@@ -30,22 +31,50 @@ public class View {
 	 *******************************************************************************************/
 	public void sampleAddingItemsAndPayment() {
 		
-		this.recentItem =    contr.findItemForSale(ItemIdentifier1);
-		 if (ItemIdentifier1 == null) throw new NullPointerException("input1");
-		 
+		try {
+		this.recentlyScannedItem =    contr.findItemForSale(ItemIdentifier1);
+
 		this.toBeDisplayed = contr.addSingleItem(ItemIdentifier1);
 		System.out.println(toBeDisplayed.toString());
+		System.out.println("----------------------");
+		} catch (NonExistingItemException e) {
+			e.printStackTrace();
+		} catch (DatabaseFailureException e) { 
+			e.printStackTrace();
+		}
+
 		
-		this.recentItem =    contr.findItemForSale(ItemIdentifier2);
-		 if (ItemIdentifier2 == null) throw new NullPointerException("input2");
+		try {
+		this.recentlyScannedItem =    contr.findItemForSale(ItemIdentifier2);
+		
 		this.toBeDisplayed = contr.addSingleItem(ItemIdentifier2);
 		System.out.println(toBeDisplayed.toString());
+		System.out.println("----------------------");
+		} catch (NonExistingItemException e) {
+			e.printStackTrace();
+		} catch (DatabaseFailureException e) { 
+			e.printStackTrace();
+		}
+//		} catch (Exception exc) { 
+//			exc.printStackTrace();
+//		}
+			
+		try {
+		this.recentlyScannedItem =    contr.findItemForSale(ItemIdentifier3);
 		
-		this.recentItem =    contr.findItemForSale(ItemIdentifier3);
-		 if (ItemIdentifier3 == null) throw new NullPointerException("input3");
 		this.toBeDisplayed = contr.addSingleItem(ItemIdentifier3);
 		System.out.println(toBeDisplayed.toString());
 		System.out.println("----------------------");
+		} catch (NonExistingItemException e) {
+			e.printStackTrace();
+		} catch (DatabaseFailureException e) { 
+			e.printStackTrace();
+		}
+//		} catch (Exception exc) { 
+//			exc.printStackTrace();
+//		}
+		
+		
 		TotalPriceDTO total = contr.finalizeSale();
 		System.out.println("Your total is: " + total);
 		

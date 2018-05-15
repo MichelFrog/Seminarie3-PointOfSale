@@ -10,26 +10,26 @@ public class SaleInformation {
 	private AmountOfCash runningTotal;
 	private ScannedItems	   scannedItems;
 	private Item newlyAddedItem;
-    private LocalDateTime saleTime;
+	private LocalDateTime saleTime;
 
 
 	/************************************
 	 * Constructor for SaleInformation without any parameters.
 	 ************************************/
 	public SaleInformation() { 
-	        runningTotal = new AmountOfCash(0);
-	        scannedItems = new ScannedItems();
-	        this.saleTime = LocalDateTime.now();
+		runningTotal = new AmountOfCash(0);
+		scannedItems = new ScannedItems();
+		this.saleTime = LocalDateTime.now();
 	}
-	
-    public SaleDTO updateSale(Item newlyScannedItem) {
-		
-    		scannedItems.increaseQuantityOfScannedItems(newlyScannedItem);
+
+	public SaleDTO updateSale(Item newlyScannedItem) {
+
+		scannedItems.increaseQuantityOfScannedItems(newlyScannedItem);
 		runningTotal.add(newlyScannedItem.getPrice());
 		newlyAddedItem = newlyScannedItem;
 		return getSaleInformation();
-    }
-    
+	}
+
 	/*************************************
 	 * NOT IN USE
 	 * Creates a string for printing out the Name, 
@@ -38,13 +38,13 @@ public class SaleInformation {
 	public String toString() {
 		Sale temporarySale = new Sale();
 		String printItemNameAndPrice = temporarySale.getScannedItem().getItemName();
-		
+
 		printItemNameAndPrice += "   " + "\n"+"Price:" + Double.toString(newlyAddedItem.getPrice());
 		printItemNameAndPrice += "   " + "\n"+"Total:" + runningTotal.toString(); 
 
 		return printItemNameAndPrice;
 	}
-		
+
 	/*************************************
 	 * Getter for runningTotal AmountOfCash.
 	 * 
@@ -62,43 +62,43 @@ public class SaleInformation {
 	 * that has been scanned;
 	 * 
 	 **************************************/
-    public SaleDTO getSaleInformation(){
-        return new SaleDTO(runningTotal,newlyAddedItem,scannedItems);
-    }
-    
-    /**************************************
-     * Setter for the running total.
-     **************************************/
-    public void setRunningTotal(AmountOfCash runningTotal) {
-        this.runningTotal = runningTotal;
-    }
-    /**************************************
-     * Setter for the running total.
-     **************************************/
-    public AmountOfCash getRunningTotal() {
-        return runningTotal;
-    }
-    
-    /**************************************
-     * Setter for the running total.
-     **************************************/
-    public void setTimeOfSale() {
-        this.saleTime = LocalDateTime.now();
-    }
-    
-    /*************************************
-    * @return The last scanned and added item.
-    **************************************/
-    public ScannedItems  getScannedItems() {
-    		return scannedItems;
-    
-    }
-    /***************************************
-    * @return The last scanned and added item.
-    **************************************/
-    public Item getnewlyAddedItem() {
-       return newlyAddedItem;
-}
+	public SaleDTO getSaleInformation(){
+		return new SaleDTO(runningTotal,newlyAddedItem,scannedItems);
+	}
 
-		
+	/**************************************
+	 * Setter for the running total.
+	 **************************************/
+	public void setRunningTotal(AmountOfCash runningTotal) {
+		this.runningTotal = runningTotal;
+	}
+	/**************************************
+	 * Setter for the running total.
+	 **************************************/
+	public AmountOfCash getRunningTotal() {
+		return runningTotal;
+	}
+
+	/**************************************
+	 * Setter for the running total.
+	 **************************************/
+	public void setTimeOfSale() {
+		this.saleTime = LocalDateTime.now();
+	}
+
+	/*************************************
+	 * @return The last scanned and added item.
+	 **************************************/
+	public ScannedItems  getScannedItems() {
+		return scannedItems;
+
+	}
+	/***************************************
+	 * @return The last scanned and added item.
+	 **************************************/
+	public Item getnewlyAddedItem() {
+		return newlyAddedItem;
+	}
+
+
 }

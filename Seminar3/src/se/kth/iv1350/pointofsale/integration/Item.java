@@ -14,7 +14,7 @@ public final class Item {
 	private String itemName;
 	private String description;
 	private String tax;
-	
+
 	/******************************************************
 	 * Constructor.
 	 * Creates a new instance representing an item in the store.
@@ -25,22 +25,22 @@ public final class Item {
 	 * @param description 	Short description of the book.
 	 *****************************************************/
 	public Item(ItemIdentifier itemCode, String itemName, AmountOfCash price,String tax, String description) {
-			 
-			this.itemCode = itemCode;
-			this.itemName = itemName; 
-			this.price = price;
-			this.tax = tax; 
-			this.description = description; 
-	
-			}
-	
+
+		this.itemCode = itemCode;
+		this.itemName = itemName; 
+		this.price = price;
+		this.tax = tax; 
+		this.description = description; 
+
+	}
+
 	/*******************************************************************************
 	 * Empty ItemDTO used for returning values in <code>searchForItem<code>
 	 * *****************************************************************************
 	 */
 	public Item() {
 	}
-	
+
 	/*******************************************************************************
 	 * Creates a string that is used to print to console
 	 * 
@@ -48,52 +48,52 @@ public final class Item {
 	 * *****************************************************************************
 	 */
 	public String toString() {
-        return "Item------------------"+"\n"+"Name:" + itemName + "\n"+"Price:" 
-        			+ price +"\n"+ "Taxrate:" + tax +"\n"+ "Description:"+ description;
-        }
-	
-    /****************************
-     * Get the value of itemCode
-     *
-     * @return the value of itemCode
-     ***************************/
+		return "Item------------------"+"\n"+"Name:" + itemName + "\n"+"Price:" 
+				+ price +"\n"+ "Taxrate:" + tax +"\n"+ "Description:"+ description;
+	}
+
+	/****************************
+	 * Get the value of itemCode
+	 *
+	 * @return the value of itemCode
+	 ***************************/
 	public ItemIdentifier getItemCode() {
 		return itemCode;
 	}
-    /****************************
-     * Get the value of itemName
-     *
-     * @return the value of itemName
-     ***************************/
-    public String getItemName() {
-        return itemName;
-    }
+	/****************************
+	 * Get the value of itemName
+	 *
+	 * @return the value of itemName
+	 ***************************/
+	public String getItemName() {
+		return itemName;
+	}
 
-    /***************************
-     * Get the value of price
-     *
-     * @return the value of price
-     ***************************/
-    public AmountOfCash getPrice() {
-        return price;
-    }
+	/***************************
+	 * Get the value of price
+	 *
+	 * @return the value of price
+	 ***************************/
+	public AmountOfCash getPrice() {
+		return price;
+	}
 
-    /****************************
-     * Get the value of tax
-     *
-     * @return the value of tax
-     ***************************/
-    public String getTax() {
-        return tax;
-    }
+	/****************************
+	 * Get the value of tax
+	 *
+	 * @return the value of tax
+	 ***************************/
+	public String getTax() {
+		return tax;
+	}
 
-    /****************************
-     * Get the value of description
-     *
-     * @return the value of description
-     ***************************/
-    public String getDescription() {
-        return description;
-    }
+	/****************************
+	 * Get the value of description
+	 *
+	 * @return the value of description
+	 ***************************/
+	public String getDescription() {
+		return description;
+	}
 
 }

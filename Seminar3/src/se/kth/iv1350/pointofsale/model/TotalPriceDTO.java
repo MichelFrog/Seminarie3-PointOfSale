@@ -1,28 +1,29 @@
 package se.kth.iv1350.pointofsale.model;
 
 public class TotalPriceDTO {
-	    private final AmountOfCash totalPrice;
+	private final AmountOfCash totalPrice;
 
-	    /**
-	     *
-	     * @param totalPrice
-	     */
-	    public TotalPriceDTO(TotalPrice totalPrice) {
-	        this.totalPrice = totalPrice.getPrice();
-	    }
+	/**
+	 *Constructor for TotalPrice
+	 * @param totalPrice
+	 */
+	public TotalPriceDTO(TotalPrice totalPrice) {
+		this.totalPrice = totalPrice.getPrice();
+	}
 
-	    
-	    /**
-	     *
-	     * @return
-	     */
-	    public AmountOfCash getTotalPrice() {
-	        return totalPrice;
-	    }
-	    
-	    public String toString(){
-	        return totalPrice.toString();
-	    }
-	    
+
+	/**
+	 *Getter for TotalPrice
+	 * @return
+	 */
+	public AmountOfCash getTotalPrice() {
+		return totalPrice;
+	}
+
+
+	public String toString(){
+		return totalPrice.toString();
+	}
+
 }
 
