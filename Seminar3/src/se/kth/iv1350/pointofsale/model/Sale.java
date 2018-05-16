@@ -2,6 +2,7 @@ package se.kth.iv1350.pointofsale.model;
 
 import se.kth.iv1350.pointofsale.integration.*;
 import se.kth.iv1350.pointofsale.model.*;
+import se.kth.iv1350.pointofsale.view.PaymentObserver;
 
 import java.util.*;
 import java.time.LocalDateTime;
@@ -9,18 +10,17 @@ import java.time.LocalDateTime;
  * Collects all information regarding a particular sale.
  *******************************************************/
 public class Sale {
-	private Item             newlyAddedItem;
-	//private ItemCatalog      listOfItems;
-	private AmountOfCash		runningTotal;
 	/********************************************************
 	 * Collects all information regarding a particular sale.
 	 *******************************************************/ 
 	private SaleInformation  saleInfo;
+	private Item             newlyAddedItem;
+	private AmountOfCash		runningTotal;
 	private CashRegister cashRegister; 
 	private TotalPrice 	totalPrice;
-
 	private ScannedItems scannedItems;
 
+	//private List<PaymentObserver> paymentObservers = new ArrayList<>();
 	/***************************************************************
 	 * Creates a new instance, and records the time it was created. 
 	 * This will be the time recorded on the receipt.
@@ -53,8 +53,10 @@ public class Sale {
 	 * @return AmountOfCash change is returned as an AmountOfCash
 	 **************************************/
 	public AmountOfCash pay(AmountOfCash givenAmount) {
+
 		return cashRegister.registerPayment(givenAmount, totalPrice);
 	}
+
 
 	/***************************************
 	 * A new TotalPriceDTO is created to present the final 

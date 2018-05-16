@@ -1,7 +1,10 @@
 package se.kth.iv1350.pointofsale.integration;
 
 public class RegistryCreator {
-	private ItemCatalog itemCatalog = new ItemCatalog();
+	/*
+	 * Not needed to initialize the singleton(?)
+	 */
+	//private static final ItemCatalog itemCatalog = new ItemCatalog();
 	private ExternalSystem externalSystem = new ExternalSystem();
 
 	public RegistryCreator(){
@@ -14,7 +17,7 @@ public class RegistryCreator {
 	 * @return the value of itemCatalog
 	 *******************************************/
 	public ItemCatalog getItemCatalog() {
-		return itemCatalog;
+		return ItemCatalog.getCatalogInstance();
 	}
 
 	/********************************************

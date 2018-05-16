@@ -18,11 +18,16 @@ public class TotalPrice {
 		tax = 1.12;
 		addTax();
 	}
+	/*
+	 * adds tax to totalPrice.
+	 */
 	private void addTax() {
 		price.updateAmount(price.getAmount()*tax);
 	}
 
-
+	/*
+	 * Getter for totalPrice
+	 */
 	public AmountOfCash getPrice() {
 		return price;
 	}

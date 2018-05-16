@@ -26,7 +26,7 @@ public class CashRegister {
 	 * @return change Adds the what's left of the purchase to the
 	 ***************************************/
 	public AmountOfCash registerPayment(AmountOfCash givenAmount, TotalPrice totalPrice) {
-		//if(null)
+
 		AmountOfCash change = calculateChange(givenAmount, totalPrice);
 		balance.add(change);
 		return change;
@@ -38,7 +38,7 @@ public class CashRegister {
 	 * @return change gets casted to AmountOfCash
 	 ***************************************/
 	private AmountOfCash calculateChange(AmountOfCash givenAmount, TotalPrice totalPrice) {
-		//if(null)
+
 		double change = givenAmount.getAmount() - totalPrice.getPrice().getAmount();
 		return new AmountOfCash(change);
 	}

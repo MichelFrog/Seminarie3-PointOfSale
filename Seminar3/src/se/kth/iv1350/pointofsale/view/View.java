@@ -1,10 +1,11 @@
 package se.kth.iv1350.pointofsale.view;
 
 import se.kth.iv1350.pointofsale.controller.Controller;
-
 import se.kth.iv1350.pointofsale.integration.*;
 import se.kth.iv1350.pointofsale.model.*;
+import se.kth.iv1350.pointofsale.logger.*;
 
+import java.io.IOException;
 import java.util.*;
 public class View {
 	
@@ -12,14 +13,25 @@ public class View {
 	ItemIdentifier ItemIdentifier2 = new ItemIdentifier(200);
 	ItemIdentifier ItemIdentifier3 = new ItemIdentifier(0);
 	
+	private ErrorMessageHandler 
+			errorMessage = new ErrorMessageHandler();
+	
 	private Controller 		contr;
 	private Item	      	    recentlyScannedItem;
 	private SaleDTO 			toBeDisplayed;
 	private AmountOfCash		givenAmount;
+	
+	private LogManager logger;
 
 	
 	public View(Controller contr) {
-				
+	ItemCatalog.getCatalogInstance().addItems();
+	contr.addRentalObserver(new TotalRevenueView());
+	try {
+	this.logger = new LogManager();
+	}catch(IOException e){
+		e.printStackTrace();
+	}
 	this.contr = contr;
 	 
 	}
@@ -33,54 +45,66 @@ public class View {
 		
 		try {
 		this.recentlyScannedItem =    contr.findItemForSale(ItemIdentifier1);
-
 		this.toBeDisplayed = contr.addSingleItem(ItemIdentifier1);
+		
 		System.out.println(toBeDisplayed.toString());
 		System.out.println("----------------------");
 		} catch (NonExistingItemException e) {
-			e.printStackTrace();
+			constructException("The item you tried to add " + e.getItemIdentifierThatDoesntExist() +"doesn't exist."
+					+ "Please try another itemID.", e);
 		} catch (DatabaseFailureException e) { 
-			e.printStackTrace();
+			constructException("ERROR. Database has failed find item "+ ItemIdentifier1.getItemId() +", try another item instead.", e);
+		} catch (Exception e) {
+			constructException("Failed to add item to basket. Try again.",e);
 		}
 
 		
 		try {
 		this.recentlyScannedItem =    contr.findItemForSale(ItemIdentifier2);
-		
 		this.toBeDisplayed = contr.addSingleItem(ItemIdentifier2);
+		
 		System.out.println(toBeDisplayed.toString());
 		System.out.println("----------------------");
 		} catch (NonExistingItemException e) {
-			e.printStackTrace();
+			constructException("The item you tried to add " + e.getItemIdentifierThatDoesntExist() 
+			+	"doesn't exist." + "Please try another itemID.", e);
 		} catch (DatabaseFailureException e) { 
-			e.printStackTrace();
+			constructException("ERROR. Database has failed find item "+ ItemIdentifier2.getItemId() +", try another item instead.", e);
 		}
-//		} catch (Exception exc) { 
-//			exc.printStackTrace();
-//		}
+		catch (Exception e) {
+			constructException("Failed to add item to basket. Try again.",e);
+		}
+
 			
 		try {
 		this.recentlyScannedItem =    contr.findItemForSale(ItemIdentifier3);
-		
 		this.toBeDisplayed = contr.addSingleItem(ItemIdentifier3);
+		
 		System.out.println(toBeDisplayed.toString());
 		System.out.println("----------------------");
 		} catch (NonExistingItemException e) {
-			e.printStackTrace();
+			constructException("The item you tried to add " + e.getItemIdentifierThatDoesntExist() 
+			+	"doesn't exist." + "Please try another itemID.", e);
 		} catch (DatabaseFailureException e) { 
-			e.printStackTrace();
+			constructException("ERROR. Database has failed find item " + ItemIdentifier3.getItemId() + ", try another item instead.", e);
 		}
-//		} catch (Exception exc) { 
-//			exc.printStackTrace();
-//		}
-		
+		catch (Exception e) {
+			constructException("Failed to add item to basket. Try again.",e);
+		}
+
 		
 		TotalPriceDTO total = contr.finalizeSale();
-		System.out.println("Your total is: " + total);
 		
         AmountOfCash givenAmount = new AmountOfCash(1500);
-        
+	
+        System.out.println("Your total is: " + total);
         System.out.println("You paid:" +givenAmount+ "\n"+ "Your change:" +contr.pay(givenAmount));
+        
+	}
+	
+	private void constructException(String userMessage, Exception e) { 
+		errorMessage.printErrorMessage(userMessage); 
+		logger.logException(e);
 	}
 	
 

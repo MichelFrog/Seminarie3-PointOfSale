@@ -1,5 +1,8 @@
 package se.kth.iv1350.pointofsale.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import se.kth.iv1350.pointofsale.integration.DatabaseFailureException;
 import se.kth.iv1350.pointofsale.integration.ExternalSystem;
 import se.kth.iv1350.pointofsale.integration.Item;
@@ -7,6 +10,7 @@ import se.kth.iv1350.pointofsale.integration.ItemCatalog;
 import se.kth.iv1350.pointofsale.integration.NonExistingItemException;
 import se.kth.iv1350.pointofsale.integration.Printer;
 import se.kth.iv1350.pointofsale.model.ItemIdentifier;
+import se.kth.iv1350.pointofsale.view.PaymentObserver;
 import se.kth.iv1350.pointofsale.integration.RegistryCreator;
 import se.kth.iv1350.pointofsale.model.*;
 
@@ -20,7 +24,10 @@ public class Controller {
 	private Receipt			    receipt;
 	private CashRegister			cashRegister;
 	private TotalPrice			totalPrice;
+	
 	private RegistryCreator      regCreator;
+
+	private List<PaymentObserver> paymentObservers =	new ArrayList<>();
 
 	private AmountOfCash startingBalance = new AmountOfCash(2000);
 	/**********************************************
@@ -93,8 +100,36 @@ public class Controller {
 		regCreator.getExternalSystem().updateAccountingSystem(finalSaleInformation);
 		regCreator.getExternalSystem().updateInventorySystem(finalSaleInformation);
 		printer.printReceipt(receipt);
-
+		
+		notifyObservers();
 		return change;
 	}
+	
+	/***************************************
+	 * Updates the observer list with information of what has been
+	 * paid after a finished sale.
+	 * @Param observed the observer to be added.
+	 ***************************************/
+	public void addRentalObserver(PaymentObserver obs) { 
+		paymentObservers.add(obs);
+	}
+	/***************************************
+	 * Notifies the observer lift of new changes to
+	 * important parameters that are being observed. 
+	 ***************************************/
+	private void notifyObservers() {
+		for (PaymentObserver observed : paymentObservers) {
+			observed.newPayment(finalizeSale());
+		}	
+	}
+	/***************************************
+	 * Updates the observer with information of what has been
+	 * paid after a finished sale.
+	 * @Param observed The 
+	 ***************************************/
+	public void addPaymentToObserver(PaymentObserver observed) { 
+		paymentObservers.add(observed);
+	}
+
 
 }

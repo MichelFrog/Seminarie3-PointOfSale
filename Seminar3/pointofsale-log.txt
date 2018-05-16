@@ -1,0 +1,7 @@
+Time thrown: 2018.05.16.22.21.32
+ERROR! Database failure, caused by: 0
+se.kth.iv1350.pointofsale.integration.DatabaseFailureException: ERROR! Database failure, caused by: 0
+	at se.kth.iv1350.pointofsale.integration.ItemCatalog.searchForItem(ItemCatalog.java:35)
+	at se.kth.iv1350.pointofsale.controller.Controller.findItemForSale(Controller.java:67)
+	at se.kth.iv1350.pointofsale.view.View.sampleAddingItemsAndPayment(View.java:80)
+	at se.kth.iv1350.pointofsale.startup.Main.main(Main.java:20)

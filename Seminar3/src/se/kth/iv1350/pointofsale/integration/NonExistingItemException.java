@@ -22,7 +22,7 @@ public class NonExistingItemException extends Exception {
 		this.itemIdentifierThatDoesntExist = itemIdentifierThatDoesntExist; 
 	}
 
-	private ItemIdentifier getItemIdentifierThatDoesntExist() {
+	public ItemIdentifier getItemIdentifierThatDoesntExist() {
 		return itemIdentifierThatDoesntExist;
 	}
 }
