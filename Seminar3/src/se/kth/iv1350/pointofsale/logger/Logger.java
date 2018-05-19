@@ -1,8 +1,8 @@
 package se.kth.iv1350.pointofsale.logger;
 /*
- *  
- */
-		
+ * Standard for all loggers that stores a message
+ * to desired area of the computer.
+ */	
 public interface Logger {
 	    /**
 	     * Implementation element used for printing a log message

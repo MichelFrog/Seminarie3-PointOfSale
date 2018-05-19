@@ -10,8 +10,8 @@ import java.util.*;
 public class View {
 	
 	ItemIdentifier ItemIdentifier1 = new ItemIdentifier(100);
-	ItemIdentifier ItemIdentifier2 = new ItemIdentifier(200);
-	ItemIdentifier ItemIdentifier3 = new ItemIdentifier(0);
+	ItemIdentifier ItemIdentifier2 = new ItemIdentifier(10);
+	ItemIdentifier ItemIdentifier3 = new ItemIdentifier(101);
 	
 	private ErrorMessageHandler 
 			errorMessage = new ErrorMessageHandler();
@@ -50,7 +50,7 @@ public class View {
 		System.out.println(toBeDisplayed.toString());
 		System.out.println("----------------------");
 		} catch (NonExistingItemException e) {
-			constructException("The item you tried to add " + e.getItemIdentifierThatDoesntExist() +"doesn't exist."
+			constructException("The item you tried to add " + e.getItemIdentifierThatDoesntExist() +" doesn't exist."
 					+ "Please try another itemID.", e);
 		} catch (DatabaseFailureException e) { 
 			constructException("ERROR. Database has failed find item "+ ItemIdentifier1.getItemId() +", try another item instead.", e);
@@ -67,7 +67,7 @@ public class View {
 		System.out.println("----------------------");
 		} catch (NonExistingItemException e) {
 			constructException("The item you tried to add " + e.getItemIdentifierThatDoesntExist() 
-			+	"doesn't exist." + "Please try another itemID.", e);
+			+	" doesn't exist." + "Please try another itemID.", e);
 		} catch (DatabaseFailureException e) { 
 			constructException("ERROR. Database has failed find item "+ ItemIdentifier2.getItemId() +", try another item instead.", e);
 		}
@@ -84,7 +84,7 @@ public class View {
 		System.out.println("----------------------");
 		} catch (NonExistingItemException e) {
 			constructException("The item you tried to add " + e.getItemIdentifierThatDoesntExist() 
-			+	"doesn't exist." + "Please try another itemID.", e);
+			+	" doesn't exist." + "Please try another itemID.", e);
 		} catch (DatabaseFailureException e) { 
 			constructException("ERROR. Database has failed find item " + ItemIdentifier3.getItemId() + ", try another item instead.", e);
 		}

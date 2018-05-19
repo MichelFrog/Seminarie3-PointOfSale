@@ -11,7 +11,7 @@ public class FileLogger implements Logger{
 	 * Storing a message with details of an exception
 	 * that needs to be logged.
 	 * (Prints said message to console.)
-	 * @see se.kth.iv1350.pointofsale.logger.Logger#log(java.lang.String)
+	 * 
 	 **********************************************************/
 	@Override
 	public void log(String message) {

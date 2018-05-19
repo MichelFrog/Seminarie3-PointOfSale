@@ -6,12 +6,12 @@ import java.util.*;
  * Singleton class that is used to store all items in
  * the database that the point of sale fetches items from.
  *********************************************************/
-public class ItemCatalog {
+public class ItemCatalog implements ItemFinder {
 
 	/*****************************
 	 * Used for storing all the items in a database.
 	 *****************************/
-	private HashMap<ItemIdentifier, Item> itemCatalog = new HashMap<ItemIdentifier, Item>();
+	private static final HashMap<ItemIdentifier, Item> itemCatalog = new HashMap<ItemIdentifier, Item>();
 	
     private static ItemCatalog ONLY_CATALOG_INSTANCE = null;
 	/*****************************
@@ -29,9 +29,10 @@ public class ItemCatalog {
 	 * @return 					Returns an Object with all information of 
 	 * 							the items to the system and user.
 	 *********************************************************/
-
-	public Item searchForItem(ItemIdentifier itemIdentifier) throws NonExistingItemException, 
-																	DatabaseFailureException {
+	
+	@Override
+	public Item lookForItem(ItemIdentifier itemIdentifier) throws NonExistingItemException, 
+																DatabaseFailureException  {
 
 		if(itemIdentifier.getItemId() == 0){
 		throw new DatabaseFailureException(
@@ -39,6 +40,9 @@ public class ItemCatalog {
 		}
 		if (this.itemCatalog.containsKey(itemIdentifier)) {
 			return this.itemCatalog.get(itemIdentifier); 
+		}
+		if(new ClosestMatch().lookForItem(itemIdentifier) != null) {
+			return new ClosestMatch().lookForItem(itemIdentifier);
 		}
 		throw new NonExistingItemException(itemIdentifier);
 	}
@@ -56,10 +60,10 @@ public class ItemCatalog {
 		Item coconut = new Item(new ItemIdentifier(100), "Coconut", new AmountOfCash(10), "12%", "Origin: UK" );
 		this.itemCatalog.put(coconut.getItemCode(),coconut);
 
-		Item Water = new Item(new ItemIdentifier(200),"Bottled Water",new AmountOfCash(9), "12%", "BottledWaterCo");
+		Item Water = new Item(new ItemIdentifier(101),"Bottled Water",new AmountOfCash(9), "12%", "BottledWaterCo");
 		this.itemCatalog.put(Water.getItemCode(),Water);
 
-		Item Soap = new Item(new ItemIdentifier(300), "Soap", new AmountOfCash(6), "12%","Don't eat");
+		Item Soap = new Item(new ItemIdentifier(102), "Soap", new AmountOfCash(6), "12%","Don't eat");
 		this.itemCatalog.put(Soap.getItemCode(),Soap);
 	}
 
@@ -69,6 +73,11 @@ public class ItemCatalog {
 		}
 		return ONLY_CATALOG_INSTANCE;
 	}
+	
+	public static HashMap<ItemIdentifier, Item> getItemList(){
+		return itemCatalog;
+	}
+	
 
 }
 

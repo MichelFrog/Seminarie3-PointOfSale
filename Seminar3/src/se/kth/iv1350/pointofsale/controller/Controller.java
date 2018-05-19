@@ -64,9 +64,9 @@ public class Controller {
 	 **********************************************/
 	public Item findItemForSale(ItemIdentifier ItemIdentifier)throws NonExistingItemException,
 																	DatabaseFailureException {
-		if(itemList.searchForItem(ItemIdentifier) == null) {
+		if(itemList.lookForItem(ItemIdentifier) == null) {
 			return null;}
-		return this.item = itemList.searchForItem(ItemIdentifier);
+		return this.item = itemList.lookForItem(ItemIdentifier);
 	}
 
 	public TotalPriceDTO finalizeSale() {
