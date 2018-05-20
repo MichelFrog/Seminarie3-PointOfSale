@@ -3,7 +3,7 @@ package se.kth.iv1350.pointofsale.view;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 /*********************************************
- * Creates and shows error message after and 
+ * Creates and shows error message after an 
  * exception has been caught to the users.
  *********************************************/
 public class ErrorMessageHandler {

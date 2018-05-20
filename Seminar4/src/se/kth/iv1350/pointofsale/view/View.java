@@ -37,7 +37,6 @@ public class View {
 	/*******************************************************************************************
 	 * Sample of hard coded execution of the adding functionality for system.
 	 * Presents the user with most recently added item, price and running total.
-	 * 
 	 *******************************************************************************************/
 	public void sampleAddingItemsAndPayment() {
 
@@ -102,9 +101,9 @@ public class View {
 		System.out.println("You paid:" +givenAmount+ "\n"+ "Your change:" +contr.pay(givenAmount));
 
 	}
-	/*
+	/************************
 	 * Make the the code less messy.
-	 */
+	 ************************/
 	private void constructException(String userMessage, Exception e) { 
 		errorMessage.printErrorMessage(userMessage); 
 		logger.logException(e);
