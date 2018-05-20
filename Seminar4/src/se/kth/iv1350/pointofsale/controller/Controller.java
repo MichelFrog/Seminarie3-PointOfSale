@@ -69,6 +69,9 @@ public class Controller {
 		return this.item = itemList.lookForItem(ItemIdentifier);
 	}
 
+	/**********************
+	 * Finalizing the sale
+	 **********************/
 	public TotalPriceDTO finalizeSale() {
 		return sale.finalizeSale();
 	}
@@ -106,14 +109,6 @@ public class Controller {
 	}
 	
 	/***************************************
-	 * Updates the observer list with information of what has been
-	 * paid after a finished sale.
-	 * @Param observed the observer to be added.
-	 ***************************************/
-	public void addRentalObserver(PaymentObserver obs) { 
-		paymentObservers.add(obs);
-	}
-	/***************************************
 	 * Notifies the observer lift of new changes to
 	 * important parameters that are being observed. 
 	 ***************************************/
@@ -122,14 +117,15 @@ public class Controller {
 			observed.newPayment(finalizeSale());
 		}	
 	}
+	
+	
 	/***************************************
-	 * Updates the observer with information of what has been
+	 * Updates the observer list with information of what has been
 	 * paid after a finished sale.
-	 * @Param observed The 
+	 * @Param observed the observer to be added.
 	 ***************************************/
-	public void addPaymentToObserver(PaymentObserver observed) { 
-		paymentObservers.add(observed);
+	public void addRentalObserver(PaymentObserver obs) { 
+		paymentObservers.add(obs);
 	}
-
 
 }

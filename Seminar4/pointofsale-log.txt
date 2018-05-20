@@ -1,11 +1,11 @@
-Time thrown: 2018.05.20.13.49.22
+Time thrown: 2018.05.20.20.55.01
 ERROR! Database failure, caused by: 0
 se.kth.iv1350.pointofsale.integration.DatabaseFailureException: ERROR! Database failure, caused by: 0
 	at se.kth.iv1350.pointofsale.integration.ItemCatalog.lookForItem(ItemCatalog.java:38)
 	at se.kth.iv1350.pointofsale.controller.Controller.findItemForSale(Controller.java:67)
 	at se.kth.iv1350.pointofsale.view.View.sampleAddingItemsAndPayment(View.java:45)
 	at se.kth.iv1350.pointofsale.startup.Main.main(Main.java:20)
-Time thrown: 2018.05.20.13.49.22
+Time thrown: 2018.05.20.20.55.01
 Cannot find item with itemID: 10. Please try another itemID.
 se.kth.iv1350.pointofsale.integration.NonExistingItemException: Cannot find item with itemID: 10. Please try another itemID.
 	at se.kth.iv1350.pointofsale.integration.ItemCatalog.lookForItem(ItemCatalog.java:47)

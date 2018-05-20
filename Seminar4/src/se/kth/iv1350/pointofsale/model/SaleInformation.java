@@ -31,21 +31,6 @@ public class SaleInformation {
 	}
 
 	/*************************************
-	 * NOT IN USE
-	 * Creates a string for printing out the Name, 
-	 * price of the item and the current running total.
-	 *************************************/
-	public String toString() {
-		Sale temporarySale = new Sale();
-		String printItemNameAndPrice = temporarySale.getScannedItem().getItemName();
-
-		printItemNameAndPrice += "   " + "\n"+"Price:" + Double.toString(newlyAddedItem.getPrice());
-		printItemNameAndPrice += "   " + "\n"+"Total:" + runningTotal.toString(); 
-
-		return printItemNameAndPrice;
-	}
-
-	/*************************************
 	 * Getter for runningTotal AmountOfCash.
 	 * 
 	 * @return The runningTotal is returned.
@@ -101,4 +86,22 @@ public class SaleInformation {
 	}
 
 
+	
+	
+	
+	
+	/*************************************
+	 * NOT IN USE
+	 * Creates a string for printing out the Name, 
+	 * price of the item and the current running total.
+	 *************************************/
+	public String toString() {
+		Sale temporarySale = new Sale();
+		String printItemNameAndPrice = temporarySale.getScannedItem().getItemName();
+
+		printItemNameAndPrice += "   " + "\n"+"Price:" + Double.toString(newlyAddedItem.getPrice());
+		printItemNameAndPrice += "   " + "\n"+"Total:" + runningTotal.toString(); 
+
+		return printItemNameAndPrice;
+	}
 }

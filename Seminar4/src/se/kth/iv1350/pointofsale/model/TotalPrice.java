@@ -8,26 +8,27 @@ public class TotalPrice {
 	private  AmountOfCash price;
 	private double tax;
 
-	/**
-	 *
-	 * @param finalSaleInfo
-	 */
+	/************************************************
+	 * Constructor for TotalPrice
+	 * 
+	 * @param finalSaleInfo Contains the total price
+	 ***********************************************/
 
 	public TotalPrice(SaleInformation finalSaleInfo) {
 		price = finalSaleInfo.getRunningTotal();
 		tax = 1.12;
 		addTax();
 	}
-	/*
-	 * adds tax to totalPrice.
-	 */
+	/************************
+	 * Adds tax to totalPrice.
+	 ************************/
 	private void addTax() {
 		price.updateAmount(price.getAmount()*tax);
 	}
 
-	/*
+	/************************
 	 * Getter for totalPrice
-	 */
+	 ************************/
 	public AmountOfCash getPrice() {
 		return price;
 	}

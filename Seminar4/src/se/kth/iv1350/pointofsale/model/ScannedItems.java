@@ -16,9 +16,6 @@ public class ScannedItems {
 	}
 
 
-
-
-
 	/**********************************************************************************
 	 * Adds item to scannedItems by increase quantity of an existing item in the cart
 	 * or by adding a new item to the cart.
