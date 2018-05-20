@@ -11,11 +11,14 @@ public class NonExistingItemException extends Exception {
 
 	private ItemIdentifier itemIdentifierThatDoesntExist;
 
-	/*
-	 * Constructor for NonExistingItemException. Used to throw
-	 * exception when items are not in the database. 
+	/***************************************************************
+	 * Constructor for <code>NonExistingItemException</code>. Used to throw
+	 * exception when items are not in the database. <code>ItemIdentifier</code> 
+	 * is stored to be used in other method.
 	 * 
-	 */
+	 * @param itemIdentifierThatDoesntExist The <code>ItemIdentifier</code> that
+	 * doesn't exist
+	 ***************************************************************/
 	public NonExistingItemException(ItemIdentifier itemIdentifierThatDoesntExist) {
 		
 		super("Cannot find item with itemID: " + itemIdentifierThatDoesntExist.getItemId() + 
@@ -23,10 +26,10 @@ public class NonExistingItemException extends Exception {
 		this.itemIdentifierThatDoesntExist = itemIdentifierThatDoesntExist; 
 	}
 
-	/*
+	/********************************
 	 * Getter for the value of the ItemIdentifier. 
 	 * Used for printing
-	 */
+	 ********************************/
 	public int getItemIdentifierThatDoesntExist() {
 		return itemIdentifierThatDoesntExist.getItemId();
 	}

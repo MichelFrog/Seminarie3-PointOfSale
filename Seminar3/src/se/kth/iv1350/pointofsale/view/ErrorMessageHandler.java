@@ -8,26 +8,26 @@ import java.util.Date;
  *********************************************/
 public class ErrorMessageHandler {
 
-	
-	
+
+
 	/*********************************************
-	 * Creates a message with information that is
-	 * of use to the user.
+	 * Creates a message with information that shows when
+	 * an error was thrown with an customizable message.
 	 * 
 	 * @param msg The message containing the error.
 	 *********************************************/
 	void printErrorMessage(String message) {
 		StringBuilder exceptionToBeShowed = new StringBuilder();
-		
+
 		exceptionToBeShowed.append("Time: "+fetchCurrentTime());
 		exceptionToBeShowed.append("\n");
 		exceptionToBeShowed.append("ERROR: ");
 		exceptionToBeShowed.append(message);
 		exceptionToBeShowed.append("\n *********************");
 
-		
+
 		System.out.println(exceptionToBeShowed);	}
-	
+
 	/*********************************************
 	 * Creates a string of the current time.
 	 * 

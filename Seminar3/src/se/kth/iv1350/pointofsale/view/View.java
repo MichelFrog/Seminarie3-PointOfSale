@@ -8,39 +8,39 @@ import se.kth.iv1350.pointofsale.logger.*;
 import java.io.IOException;
 import java.util.*;
 public class View {
-	
+
 	ItemIdentifier ItemIdentifier1 = new ItemIdentifier(0);
 	ItemIdentifier ItemIdentifier2 = new ItemIdentifier(10);
 	ItemIdentifier ItemIdentifier3 = new ItemIdentifier(101);
-	
+
 	private ErrorMessageHandler errorMessage = new ErrorMessageHandler();
-	
+
 	private Controller 		contr;
 	private Item	      	    recentlyScannedItem;
 	private SaleDTO 			toBeDisplayed;
 	private AmountOfCash		givenAmount;
 	private LogManager logger;
 
-	
+
 	public View(Controller contr) {
-	ItemCatalog.getCatalogInstance().addItems();
-	contr.addRentalObserver(new TotalRevenueView());
-	try {
-	this.logger = new LogManager();
-	}catch(IOException e){
-		e.printStackTrace();
+		ItemCatalog.getCatalogInstance().addItems();
+		contr.addRentalObserver(new TotalRevenueView());
+		try {
+			this.logger = new LogManager();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		this.contr = contr;
+
 	}
-	this.contr = contr;
-	 
-	}
-	
+
 	/*******************************************************************************************
 	 * Sample of hard coded execution of the adding functionality for system.
 	 * Presents the user with most recently added item, price and running total.
 	 * 
 	 *******************************************************************************************/
 	public void sampleAddingItemsAndPayment() {
-		
+
 		try {
 			this.recentlyScannedItem =    contr.findItemForSale(ItemIdentifier1);
 			this.toBeDisplayed = contr.addSingleItem(ItemIdentifier1);
@@ -93,14 +93,14 @@ public class View {
 			constructException("Failed to add item to basket. Try again.",e);
 		}
 
-		
+
 		TotalPriceDTO total = contr.finalizeSale();
-		
-        AmountOfCash givenAmount = new AmountOfCash(1500);
-	
-        System.out.println("Your total is: " + total);
-        System.out.println("You paid:" +givenAmount+ "\n"+ "Your change:" +contr.pay(givenAmount));
-        
+
+		AmountOfCash givenAmount = new AmountOfCash(1500);
+
+		System.out.println("Your total is: " + total);
+		System.out.println("You paid:" +givenAmount+ "\n"+ "Your change:" +contr.pay(givenAmount));
+
 	}
 	/*
 	 * Make the the code less messy.
@@ -109,6 +109,6 @@ public class View {
 		errorMessage.printErrorMessage(userMessage); 
 		logger.logException(e);
 	}
-	
+
 
 }

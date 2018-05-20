@@ -12,8 +12,8 @@ public class ItemCatalog implements ItemFinder {
 	 * Used for storing all the items in a database.
 	 *****************************/
 	private static final HashMap<ItemIdentifier, Item> itemCatalog = new HashMap<ItemIdentifier, Item>();
-	
-    private static ItemCatalog ONLY_CATALOG_INSTANCE = null;
+
+	private static final ItemCatalog ONLY_CATALOG_INSTANCE = new ItemCatalog();
 	/*****************************
 	 * Empty and private constructor to avoid having more than one
 	 * instance of the singleton class.
@@ -29,14 +29,14 @@ public class ItemCatalog implements ItemFinder {
 	 * @return 					Returns an Object with all information of 
 	 * 							the items to the system and user.
 	 *********************************************************/
-	
+
 	@Override
 	public Item lookForItem(ItemIdentifier itemIdentifier) throws NonExistingItemException, 
-																DatabaseFailureException  {
+	DatabaseFailureException  {
 
 		if(itemIdentifier.getItemId() == 0){
-		throw new DatabaseFailureException(
-				"ERROR! Database failure, caused by: " + itemIdentifier.getItemId());
+			throw new DatabaseFailureException(
+					"ERROR! Database failure, caused by: " + itemIdentifier.getItemId());
 		}
 		if (this.itemCatalog.containsKey(itemIdentifier)) {
 			return this.itemCatalog.get(itemIdentifier); 
@@ -66,18 +66,17 @@ public class ItemCatalog implements ItemFinder {
 		Item Soap = new Item(new ItemIdentifier(102), "Soap", new AmountOfCash(6), "12%","Don't eat");
 		this.itemCatalog.put(Soap.getItemCode(),Soap);
 	}
-
+	/*
+	 * Used to get the only instance of ItemCalog.
+	 */
 	public static ItemCatalog getCatalogInstance() {
-		if(ONLY_CATALOG_INSTANCE == null) {
-			ONLY_CATALOG_INSTANCE = new ItemCatalog();
-		}
 		return ONLY_CATALOG_INSTANCE;
 	}
-	
+
 	public static HashMap<ItemIdentifier, Item> getItemList(){
 		return itemCatalog;
 	}
-	
+
 
 }
 

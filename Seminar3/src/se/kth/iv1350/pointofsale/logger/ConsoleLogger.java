@@ -5,7 +5,7 @@ package se.kth.iv1350.pointofsale.logger;
  */
 public class ConsoleLogger implements Logger {
 
-	
+
 	/**********************************************************
 	 * Implementation for Logger Interface. Prints a message
 	 * to console with information about an exception.
@@ -14,8 +14,7 @@ public class ConsoleLogger implements Logger {
 	 **********************************************************/
 	@Override
 	public void log(String message) {
-        System.out.println(message);
-		
+		System.out.println(message);	
 	}
 
 }
