@@ -24,7 +24,8 @@ public class NonExistingItemException extends Exception {
 	}
 
 	/*
-	 * Getter for the value of the ItemIdentifier.
+	 * Getter for the value of the ItemIdentifier. 
+	 * Used for printing
 	 */
 	public int getItemIdentifierThatDoesntExist() {
 		return itemIdentifierThatDoesntExist.getItemId();

@@ -8,7 +8,7 @@ import java.util.*;
  * of exceptions within the ItemCatalog.
  * 
  */
-public class ItemCatalogException extends Exception {
+public class ItemCatalogException extends RuntimeException {
 
 	/**
 	 * Creates a new instance representing a condition that

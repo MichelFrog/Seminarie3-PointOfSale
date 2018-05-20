@@ -19,6 +19,6 @@ public interface ItemFinder {
 	 * 							the items to the system and user.
 	 *********************************************************/
     Item lookForItem(ItemIdentifier itemIdentifier)throws NonExistingItemException, 
-													DatabaseFailureException;
+														DatabaseFailureException;
 }
 

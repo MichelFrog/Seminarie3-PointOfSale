@@ -11,12 +11,10 @@ public class FileLogger implements Logger{
 	 * Storing a message with details of an exception
 	 * that needs to be logged.
 	 * (Prints said message to console.)
-	 * 
+	 * Not yet made. PrintWriter is used in meantime
 	 **********************************************************/
 	@Override
 	public void log(String message) {
-		// TODO Auto-generated method stub
-		
 	}	
 
 }
