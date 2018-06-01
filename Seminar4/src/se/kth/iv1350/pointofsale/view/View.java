@@ -38,6 +38,11 @@ public class View {
 	/*******************************************************************************************
 	 * Sample of hard coded execution of the adding functionality for system.
 	 * Presents the user with most recently added item, price and running total.
+	 * 
+	 * @throws NonExistingItemException If searched item isn't found.
+	 * @throws DatabaseFailureException If a database failure occur during search
+	 * @throws ItemCatalogException If any of the other exceptions fail to catch.
+	 * 
 	 *******************************************************************************************/
 	public void sampleAddingItemsAndPayment() {
 

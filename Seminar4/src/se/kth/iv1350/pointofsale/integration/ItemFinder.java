@@ -17,8 +17,11 @@ public interface ItemFinder {
 	 * 
 	 * @return 					Returns an Object with all information of 
 	 * 							the items to the system and user.
+	 * 
+	 * @throws NonExistingItemException if the items doesn't exist in the itemCatalog
+	 * @throws DatabaseFailureException if an item or call caused the database fail.
 	 *********************************************************/
 	Item lookForItem(ItemIdentifier itemIdentifier)throws NonExistingItemException, 
-	DatabaseFailureException;
+															DatabaseFailureException;
 }
 
