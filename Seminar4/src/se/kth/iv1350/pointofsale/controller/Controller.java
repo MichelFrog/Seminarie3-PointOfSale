@@ -9,10 +9,9 @@ import se.kth.iv1350.pointofsale.integration.Item;
 import se.kth.iv1350.pointofsale.integration.ItemCatalog;
 import se.kth.iv1350.pointofsale.integration.NonExistingItemException;
 import se.kth.iv1350.pointofsale.integration.Printer;
-import se.kth.iv1350.pointofsale.model.ItemIdentifier;
-import se.kth.iv1350.pointofsale.view.PaymentObserver;
 import se.kth.iv1350.pointofsale.integration.RegistryCreator;
 import se.kth.iv1350.pointofsale.model.*;
+import se.kth.iv1350.pointofsale.view.TotalRevenueView;
 
 
 public class Controller {
@@ -26,9 +25,7 @@ public class Controller {
 	private TotalPrice			totalPrice;
 	
 	private RegistryCreator      regCreator;
-
-	private List<PaymentObserver> paymentObservers =	new ArrayList<>();
-
+	
 	private AmountOfCash startingBalance = new AmountOfCash(2000);
 	/**********************************************
 	 *  Creates an empty object that will be used for the current {@link Sale} 
@@ -61,6 +58,9 @@ public class Controller {
 	 * @return Item returns the found item from the register
 	 * If it doesn't:
 	 * @return null return null if the item is non-existing
+	 * 
+	 * @throws NonExistingItemException if the items wasn't found in the ItemCatalog
+	 * @throws DatabaseFailureException if an item or call caused the database fail.
 	 **********************************************/
 	public Item findItemForSale(ItemIdentifier ItemIdentifier)throws NonExistingItemException,
 																	DatabaseFailureException {
@@ -81,6 +81,9 @@ public class Controller {
 	 * it through sale to SaleInformation.
 	 *
 	 * @param code entered by the cashier.
+	 * 
+	 * @throws NonExistingItemException if the items wasn't found in the ItemCatalog
+	 * @throws DatabaseFailureException if an item or call caused the database fail.
 	 **********************************************/ 
 	public SaleDTO addSingleItem(ItemIdentifier item)throws NonExistingItemException,
 															DatabaseFailureException {
@@ -104,28 +107,16 @@ public class Controller {
 		regCreator.getExternalSystem().updateInventorySystem(finalSaleInformation);
 		printer.printReceipt(receipt);
 		
-		notifyObservers();
 		return change;
 	}
 	
-	/***************************************
-	 * Notifies the observer lift of new changes to
-	 * important parameters that are being observed. 
-	 ***************************************/
-	private void notifyObservers() {
-		for (PaymentObserver observed : paymentObservers) {
-			observed.newPayment(finalizeSale());
-		}	
-	}
+    /**
+     * Sets the viewer that is to be used by Sale.
+     * @param viewer is the TotalRevenueView to be used by the CashRegister
+     */
+    public void addObserver(TotalRevenueView viewer) {
+        sale.addPaymentObserver(viewer);
+}
 	
-	
-	/***************************************
-	 * Updates the observer list with information of what has been
-	 * paid after a finished sale.
-	 * @Param observed the observer to be added.
-	 ***************************************/
-	public void addRentalObserver(PaymentObserver obs) { 
-		paymentObservers.add(obs);
-	}
 
 }

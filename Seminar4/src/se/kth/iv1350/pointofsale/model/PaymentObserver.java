@@ -1,6 +1,5 @@
-package se.kth.iv1350.pointofsale.view;
+package se.kth.iv1350.pointofsale.model;
 
-import se.kth.iv1350.pointofsale.model.TotalPriceDTO;
 /***********************************
  * Interface that is used to implement 
  * observer classes.
@@ -12,6 +11,6 @@ public interface PaymentObserver {
 	 *
 	 * @param queueNo The new queue number.
 	 ***********************************/
-	void newPayment(TotalPriceDTO totalPrice);
+	void newPayment(TotalPrice totalPrice);
 }
 

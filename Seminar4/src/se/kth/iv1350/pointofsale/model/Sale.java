@@ -2,7 +2,7 @@ package se.kth.iv1350.pointofsale.model;
 
 import se.kth.iv1350.pointofsale.integration.*;
 import se.kth.iv1350.pointofsale.model.*;
-import se.kth.iv1350.pointofsale.view.PaymentObserver;
+import se.kth.iv1350.pointofsale.view.TotalRevenueView;
 
 import java.util.*;
 import java.time.LocalDateTime;
@@ -19,8 +19,9 @@ public class Sale {
 	private CashRegister cashRegister; 
 	private TotalPrice 	totalPrice;
 	private ScannedItems scannedItems;
+	
 
-	//private List<PaymentObserver> paymentObservers = new ArrayList<>();
+	private List<PaymentObserver> paymentObservers =	new ArrayList<>();
 	/***************************************************************
 	 * Creates a new instance, and records the time it was created. 
 	 * This will be the time recorded on the receipt.
@@ -53,9 +54,10 @@ public class Sale {
 	 * @return AmountOfCash change is returned as an AmountOfCash
 	 **************************************/
 	public AmountOfCash pay(AmountOfCash givenAmount) {
-
+		notifyObservers();
 		return cashRegister.registerPayment(givenAmount, totalPrice);
 	}
+	
 
 
 	/***************************************
@@ -105,4 +107,24 @@ public class Sale {
 	public void showAddedItem(Item newlyAddedItem) {
 		newlyAddedItem.toString();
 	}
+	
+	/***************************************
+	 * Updates the observer list with the revenue 
+	 * from the sale.
+	 * @Param observed the observer to be added.
+	 ***************************************/
+	public void addPaymentObserver(PaymentObserver obs) { 
+		paymentObservers.add(obs);
+	}
+	
+	/***************************************
+	 * Used to update any change of the state of new payments
+	 * that has been made.
+	 ***************************************/	
+	private void notifyObservers() {
+		for (PaymentObserver observed : paymentObservers) {
+			observed.newPayment(totalPrice);
+		}
+	}
+
 }

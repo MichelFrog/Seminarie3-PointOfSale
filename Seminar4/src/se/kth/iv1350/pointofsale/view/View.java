@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.util.*;
 public class View {
 
-	ItemIdentifier ItemIdentifier1 = new ItemIdentifier(0);
-	ItemIdentifier ItemIdentifier2 = new ItemIdentifier(10);
+	ItemIdentifier ItemIdentifier1 = new ItemIdentifier(100);
+	ItemIdentifier ItemIdentifier2 = new ItemIdentifier(102);
 	ItemIdentifier ItemIdentifier3 = new ItemIdentifier(101);
 
 	private ErrorMessageHandler errorMessage = new ErrorMessageHandler();
@@ -19,12 +19,13 @@ public class View {
 	private Item	      	    recentlyScannedItem;
 	private SaleDTO 			toBeDisplayed;
 	private AmountOfCash		givenAmount;
-	private LogManager logger;
+	private Sale				sale;
+	private LogManager 		logger;
 
 
 	public View(Controller contr) {
 		ItemCatalog.getCatalogInstance().addItems();
-		contr.addRentalObserver(new TotalRevenueView());
+		contr.addObserver(new TotalRevenueView());
 		try {
 			this.logger = new LogManager();
 		}catch(IOException e){
@@ -80,7 +81,7 @@ public class View {
 			this.toBeDisplayed = contr.addSingleItem(ItemIdentifier3);
 
 			System.out.println(toBeDisplayed.toString());
-			System.out.println("----------------------");
+			System.out.println("----------------------"+ "\n");
 		} catch (NonExistingItemException e) {
 			constructException("The item you tried to add to the cart: " + e.getItemIdentifierThatDoesntExist() +
 					", doesn't exist." + " Please try another itemID.", e);
@@ -107,7 +108,8 @@ public class View {
 	private void constructException(String userMessage, Exception e) { 
 		errorMessage.printErrorMessage(userMessage); 
 		logger.logException(e);
+		System.out.println("");
 	}
-
+	
 
 }

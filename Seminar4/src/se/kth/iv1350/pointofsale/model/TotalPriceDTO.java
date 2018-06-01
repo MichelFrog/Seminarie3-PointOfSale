@@ -20,7 +20,10 @@ public class TotalPriceDTO {
 		return totalPrice;
 	}
 
-
+	/************************
+	 * Used to convert the price to string
+	 * for printing.
+	 ************************/
 	public String toString(){
 		return totalPrice.toString();
 	}

@@ -32,4 +32,12 @@ public class TotalPrice {
 	public AmountOfCash getPrice() {
 		return price;
 	}
+	
+	/************************
+	 * Used to convert the price to string
+	 * for printing.
+	 ************************/
+	public String toString(){
+		return price.toString();
+	}
 }
