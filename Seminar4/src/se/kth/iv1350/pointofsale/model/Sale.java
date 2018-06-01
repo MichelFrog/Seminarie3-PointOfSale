@@ -48,7 +48,7 @@ public class Sale {
 	}
 
 	/***************************************
-	 * Pays for the whole sale and returns change.
+	 * Used to pay for the sale and update new revenue gained.
 	 * 
 	 * @param givenAmount the amount of cash given by customer
 	 * @return AmountOfCash change is returned as an AmountOfCash
